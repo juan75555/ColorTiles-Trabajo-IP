@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 public class Tablero extends JPanel  {
 
 	private int filas,columnas,vidas,puntos;
+	private double dificultad;
 	private int[][] matriz = new int[filas][columnas];
 	private String[] colores = {"rojo","verde","azul","amarillo","rosa","naranja"};
 	private String color;
@@ -18,11 +19,12 @@ public class Tablero extends JPanel  {
 		//para inicializar el tablero y el juego
 		this.setFilas(6);
 		this.setColumnas(6);
+		this.setDificultad(0.6);
 		this.setVidas(3);
 		this.setPuntos(0);
 		for(int i = 0; i<matriz.length; i++) {
 			for(int j = 0; j<matriz[i].length;j++) {
-				matriz[i][j] = (int) (Math.random()*10);
+				matriz[i][j] = (int) (Math.random()*7);
 			}
 		}
 		// Añadimos el 'escuchador' de ratón
@@ -34,6 +36,14 @@ public class Tablero extends JPanel  {
 
 	public int getFilas() {
 		return filas;
+	}
+
+	public double getDificultad() {
+		return dificultad;
+	}
+
+	public void setDificultad(double dificultad) {
+		if(this.dificultad<1 && this.dificultad>0) this.dificultad = dificultad;
 	}
 
 	public void setFilas(int filas) {
