@@ -94,7 +94,7 @@ public class Tablero {
 				if(matriz[i][j]!=0) matriz[i][j] = 0;
 			}
 			if(DificultadCorrecta()>(getColumnas()*getFilas())*getDificultad()) {
-				if(matriz[i][j]!=0) matriz[i][j] = (int) (Math.random()*6)+1;
+				if(matriz[i][j]==0) matriz[i][j] = (int) (Math.random()*6)+1;
 			}
 		}
 		System.out.printf("Contador blancos = %d \n",DificultadCorrecta());
