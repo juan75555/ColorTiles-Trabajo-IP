@@ -87,7 +87,7 @@ public class Tablero {
 				matriz[i][j] = (int) (Math.random()*7);
 			}
 		}
-		while(DificultadCorrecta()<(getColumnas()*getFilas())*getDificultad()) {
+		while(DificultadCorrecta()!=(getColumnas()*getFilas())*getDificultad()) {
 			int i = (int) (Math.random()*getFilas());
 			int j = (int) (Math.random()*getColumnas());
 			if(DificultadCorrecta()<(getColumnas()*getFilas())*getDificultad()) {
