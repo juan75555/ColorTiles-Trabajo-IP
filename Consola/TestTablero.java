@@ -13,9 +13,11 @@ public class TestTablero {
 		}
 		if (t.getVidas() == 0) {
 			System.out.print("\n\033[31m YOU LOSE!!! :(");
+			teclado.close();
 		}
 		if (t.getPuntos() >=t.MaximasJugadas()) {
 			System.out.print("\n\033[32m YOU WIN!!! :)");
+			teclado.close();
 		}
 	}
 	public static void main(String[] args) {
@@ -24,4 +26,5 @@ public class TestTablero {
 		t.ImprimeTablero(tablero);
 		Juego(t,tablero);
 	}
+
 }
