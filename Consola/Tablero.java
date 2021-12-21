@@ -118,6 +118,61 @@ public class Tablero {
 		}
 		System.out.printf("\nVidas: %d Puntos: %d",getVidas(),getPuntos());
 	}
+	public int MaximasJugadas() {
+		int max = 0;
+		for(int i = 0; i<matriz.length; i++) {
+			for(int j = 0; j<matriz[i].length;j++) {
+				try {
+					if(matriz[i][j-1] == matriz[i+1][j]) {
+						max += 5;
+					}
+					else if(matriz[i][j-1] == matriz[i-1][j]) {
+						max += 5;
+					}
+					else if(matriz[i][j+1] == matriz[i+1][j]) {
+						max += 5;
+					}
+					else if(matriz[i][j+1] == matriz[i-1][j]) {
+						max += 5;
+					}
+				}
+				catch(Exception e) {
+					try {
+						if(matriz[i][j-1] == matriz[i-1][j]) {
+							max += 5;
+						}
+						else if(matriz[i][j+1] == matriz[i+1][j]) {
+							max += 5;
+						}
+						else if(matriz[i][j+1] == matriz[i-1][j]) {
+							max += 5;
+						}
+					}
+					catch(Exception x) {
+						try {
+							if(matriz[i][j+1] == matriz[i+1][j]) {
+								max += 5;
+							}
+							else if(matriz[i][j+1] == matriz[i-1][j]) {
+								max += 5;
+							}
+						}
+						catch(Exception y) {
+							try {
+								if(matriz[i][j+1] == matriz[i-1][j]) {
+									max += 5;
+								}
+							}
+							catch(Exception z) {
+								j++;
+							}
+						}
+					}
+				}
+			}
+		}
+		return max;
+	}
 	public int[][] Jugada(int jf,int jc){
 		try {
 			if(matriz[jf][jc-1] == matriz[jf+1][jc]) {
