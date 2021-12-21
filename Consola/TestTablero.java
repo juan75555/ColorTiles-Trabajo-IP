@@ -23,6 +23,7 @@ public class Main {
 	public static void main(String[] args) {
 		Tablero t = new Tablero();
 		Scanner teclado = new Scanner(System.in);
+		String name = "YOU";
 		System.out.print("Deseas jugar como invitado? (S/N): ");
 		String op = teclado.next();
 		while(!(op.equals("S") || op.equals("N"))) {
@@ -31,7 +32,7 @@ public class Main {
 		}
 		if(op.equals("N")) {
 			System.out.print("Introduce tu nombre: ");
-			String name = teclado.next();
+			name = teclado.next();
 			t.setName(name);
 		}
 		System.out.printf("El tamaño del tablero actualmente es %d x %d.\n Deseas cambiarlo?(S/N): ", t.getFilas(),t.getColumnas());
@@ -55,7 +56,7 @@ public class Main {
 				System.out.print("\nIntroduce el nuevo numero de columnas: ");
 				columnas = teclado.nextInt();
 			}
-			t = new Tablero(filas,columnas);
+			t = new Tablero(name,filas,columnas);
 		}
 		int[][] tablero = t.GeneraTablero();
 		t.ImprimeTablero(tablero);
