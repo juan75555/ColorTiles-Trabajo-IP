@@ -2,6 +2,7 @@
 public class Tablero {
 	private int filas,columnas,vidas,puntos;
 	private double dificultad;
+	private String name;
 	private int[][] matriz = new int[filas][columnas];
 	public static final String ANSI_BLACK = "\033[30m";
 	public static final String ANSI_RED = "\033[31m";
@@ -23,6 +24,7 @@ public class Tablero {
 	Tablero() {
 		//El constructor debe tener los parámetros oportunos 
 		//para inicializar el tablero y el juego
+		this.setName("YOU");
 		this.setFilas(6);
 		this.setColumnas(6);
 		this.setDificultad(0.5);
@@ -31,7 +33,26 @@ public class Tablero {
 		matriz = new int[getFilas()][getColumnas()];
 		this.setMatriz(GeneraTablero());
 	}
-	
+	Tablero(String name) {
+		//El constructor debe tener los parámetros oportunos 
+		//para inicializar el tablero y el juego
+		this.setName(name);
+		this.setFilas(6);
+		this.setColumnas(6);
+		this.setDificultad(0.5);
+		this.setVidas(3);
+		this.setPuntos(0);
+		matriz = new int[getFilas()][getColumnas()];
+		this.setMatriz(GeneraTablero());
+	}
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	public int[][] getMatriz() {
 		return matriz;
 	}
