@@ -150,7 +150,68 @@ public class Tablero {
 			}
 		}
 		catch(Exception e) {
-			System.out.print("xd");
+			try {
+				if(matriz[jf][jc-1] == matriz[jf-1][jc]) {
+					int puntos=getPuntos();
+					setPuntos(puntos+5);
+					matriz[jf][jc-1]=0;
+					matriz[jf-1][jc]=0;
+				}
+				else if(matriz[jf][jc+1] == matriz[jf+1][jc]) {
+					int puntos=getPuntos();
+					setPuntos(puntos+5);
+					matriz[jf][jc+1] = 0;
+					matriz[jf+1][jc] = 0;
+				}
+				else if(matriz[jf][jc+1] == matriz[jf-1][jc]) {
+					int puntos=getPuntos();
+					setPuntos(puntos+5);
+					matriz[jf][jc+1] = 0;
+					matriz[jf-1][jc] = 0;
+				}
+				else {
+					int vidas = getVidas();
+					setVidas(vidas-1);
+				}
+			}
+			catch(Exception x) {
+				try {
+					if(matriz[jf][jc+1] == matriz[jf+1][jc]) {
+						int puntos=getPuntos();
+						setPuntos(puntos+5);
+						matriz[jf][jc+1] = 0;
+						matriz[jf+1][jc] = 0;
+					}
+					else if(matriz[jf][jc+1] == matriz[jf-1][jc]) {
+						int puntos=getPuntos();
+						setPuntos(puntos+5);
+						matriz[jf][jc+1] = 0;
+						matriz[jf-1][jc] = 0;
+					}
+					else {
+						int vidas = getVidas();
+						setVidas(vidas-1);
+					}
+				}
+				catch(Exception y) {
+					try {
+						if(matriz[jf][jc+1] == matriz[jf-1][jc]) {
+							int puntos=getPuntos();
+							setPuntos(puntos+5);
+							matriz[jf][jc+1] = 0;
+							matriz[jf-1][jc] = 0;
+						}
+						else {
+							int vidas = getVidas();
+							setVidas(vidas-1);
+						}
+					}
+					catch(Exception z) {
+						int vidas = getVidas();
+						setVidas(vidas-1);
+					}
+				}
+			}
 		}
 		return matriz;
 	}
