@@ -33,6 +33,18 @@ public class Tablero {
 		matriz = new int[getFilas()][getColumnas()];
 		this.setMatriz(GeneraTablero());
 	}
+	Tablero(int filas, int columnas) {
+		//El constructor debe tener los parámetros oportunos 
+		//para inicializar el tablero y el juego
+		this.setName("YOU");
+		this.setFilas(filas);
+		this.setColumnas(columnas);
+		this.setDificultad(0.5);
+		this.setVidas(3);
+		this.setPuntos(0);
+		matriz = new int[getFilas()][getColumnas()];
+		this.setMatriz(GeneraTablero());
+	}
 	public String getName() {
 		return name;
 	}
