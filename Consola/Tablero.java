@@ -87,14 +87,23 @@ public class Tablero {
 				matriz[i][j] = (int) (Math.random()*7);
 			}
 		}
-		while(DificultadCorrecta()!=(getColumnas()*getFilas())*getDificultad()) {
-			int i = (int) (Math.random()*getFilas());
-			int j = (int) (Math.random()*getColumnas());
-			if(DificultadCorrecta()<(getColumnas()*getFilas())*getDificultad()) {
-				if(matriz[i][j]!=0) matriz[i][j] = 0;
+		if((getColumnas()*getFilas())%2==0){
+			while(DificultadCorrecta()!=(getColumnas()*getFilas())*getDificultad()){
+				int i = (int) (Math.random()*getFilas());
+				int j = (int) (Math.random()*getColumnas());
+				if(DificultadCorrecta()<(getColumnas()*getFilas())*getDificultad()) {
+					if(matriz[i][j]!=0) matriz[i][j] = 0;
+				}
+				if(DificultadCorrecta()>(getColumnas()*getFilas())*getDificultad()) {
+					if(matriz[i][j]==0) matriz[i][j] = (int) (Math.random()*6)+1;
+				}
 			}
-			if(DificultadCorrecta()>(getColumnas()*getFilas())*getDificultad()) {
-				if(matriz[i][j]==0) matriz[i][j] = (int) (Math.random()*6)+1;
+		}
+		else {
+			while(DificultadCorrecta()<(getColumnas()*getFilas())*getDificultad()){
+				int i = (int) (Math.random()*getFilas());
+				int j = (int) (Math.random()*getColumnas());
+				if(matriz[i][j]!=0) matriz[i][j] = 0;
 			}
 		}
 		System.out.printf("Contador blancos = %d \n",DificultadCorrecta());
