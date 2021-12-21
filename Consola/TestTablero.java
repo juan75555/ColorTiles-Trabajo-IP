@@ -24,5 +24,4 @@ public class TestTablero {
 		t.ImprimeTablero(tablero);
 		Juego(t,tablero);
 	}
-
 }
