@@ -3,7 +3,7 @@ public class Main {
 	public static void Juego(Tablero t,int[][] tablero) {
 		Scanner teclado = new Scanner(System.in);
 		System.out.print("\nMaximos Puntos Posibles: "+t.MaximasJugadas()+"\n");
-		while(t.getVidas()>0 && t.getPuntos()<t.MaximasJugadas()) {
+		while(t.getVidas()>0 && t.MaximasJugadas()>0){
 			System.out.print("\nIntroduce tu jugada (fila, columna): ");
 			int jf = teclado.nextInt();
 			int jc = teclado.nextInt();
