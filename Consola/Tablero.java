@@ -12,13 +12,20 @@ public class Tablero {
 	public static final String ANSI_CYAN = "\033[36m";
 	public static final String ANSI_WHITE = "\033[37m";
 	public static final String ANSI_RESET = "\u001B[0m";
-	
+	public static final String BLACK_BACKGROUND = "\033[40m";  // BLACK
+    public static final String RED_BACKGROUND = "\033[41m";    // RED
+    public static final String GREEN_BACKGROUND = "\033[42m";  // GREEN
+    public static final String YELLOW_BACKGROUND = "\033[43m"; // YELLOW
+    public static final String BLUE_BACKGROUND = "\033[44m";   // BLUE
+    public static final String PURPLE_BACKGROUND = "\033[45m"; // PURPLE
+    public static final String CYAN_BACKGROUND = "\033[46m";   // CYAN
+    public static final String WHITE_BACKGROUND = "\033[47m";  // WHITE
 	Tablero() {
 		//El constructor debe tener los parámetros oportunos 
 		//para inicializar el tablero y el juego
 		this.setFilas(6);
 		this.setColumnas(6);
-		this.setDificultad(0.6);
+		this.setDificultad(0.5);
 		this.setVidas(3);
 		this.setPuntos(0);
 		matriz = new int[getFilas()][getColumnas()];
@@ -65,12 +72,32 @@ public class Tablero {
 	public void setPuntos(int puntos) {
 		this.puntos = puntos;
 	}
+	public int DificultadCorrecta() {
+		int cont = 0;
+		for(int i = 0; i<getFilas(); i++) {
+			for(int j = 0; j<getColumnas();j++) {
+				if(matriz[i][j]==0) cont++;
+			}
+		}
+		return cont;
+	}
 	public int[][] GeneraTablero() {
 		for(int i = 0; i<getFilas(); i++) {
 			for(int j = 0; j<getColumnas();j++) {
 				matriz[i][j] = (int) (Math.random()*7);
 			}
 		}
+		while(DificultadCorrecta()<(getColumnas()*getFilas())*getDificultad()) {
+			int i = (int) (Math.random()*getFilas());
+			int j = (int) (Math.random()*getColumnas());
+			if(DificultadCorrecta()<(getColumnas()*getFilas())*getDificultad()) {
+				if(matriz[i][j]!=0) matriz[i][j] = 0;
+			}
+			if(DificultadCorrecta()>(getColumnas()*getFilas())*getDificultad()) {
+				if(matriz[i][j]!=0) matriz[i][j] = (int) (Math.random()*6)+1;
+			}
+		}
+		System.out.printf("Contador blancos = %d \n",DificultadCorrecta());
 		return matriz;
 	}
 	public void ColoresTablero(int numero) {
@@ -110,12 +137,13 @@ public class Tablero {
 		}
 		System.out.println("");
 		for(int i = 0; i<getColumnas();i++) {
+			System.out.print(i+" ");
+		}
+		System.out.println("");
+		for(int i = 0; i<getColumnas();i++) {
 			System.out.print("---");
 		}
 		System.out.println();
-		for(int i = 0; i<getColumnas();i++) {
-			System.out.print(i+" ");
-		}
 		System.out.printf("\nVidas: %d Puntos: %d",getVidas(),getPuntos());
 	}
 	public int MaximasJugadas() {
