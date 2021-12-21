@@ -99,18 +99,56 @@ public class Tablero {
 	}
 	public void ImprimeTablero(int[][] matriz) {
 		for(int i = 0; i<getColumnas();i++) {
-			System.out.print("-------");
+			System.out.print("---");
 		}
+		System.out.println("");
 		for(int i = 0; i<matriz.length; i++) {
-			System.out.println();
 			for(int j = 0; j<matriz.length; j++) {
 				ColoresTablero(matriz[i][j]);
 			}
+			System.out.println("    |"+i);
 		}
 		System.out.println("");
 		for(int i = 0; i<getColumnas();i++) {
-			System.out.print("-------");
+			System.out.print("---");
+		}
+		System.out.println();
+		for(int i = 0; i<getColumnas();i++) {
+			System.out.print(i+" ");
 		}
 		System.out.printf("\nVidas: %d Puntos: %d",getVidas(),getPuntos());
 	}
+	public int[][] Jugada(int jf,int jc){
+		try {
+			if(matriz[jf][jc-1] == matriz[jf+1][jc]) {
+				int puntos=getPuntos();
+				setPuntos(puntos+5);
+				matriz[jf][jc-1]=0;
+				matriz[jf+1][jc]=0;
+			}
+			if(matriz[jf][jc-1] == matriz[jf-1][jc]) {
+				int puntos=getPuntos();
+				setPuntos(puntos+5);
+				matriz[jf][jc-1]=0;
+				matriz[jf-1][jc]=0;
+			}
+			if(matriz[jf][jc+1] == matriz[jf+1][jc]) {
+				int puntos=getPuntos();
+				setPuntos(puntos+5);
+				matriz[jf][jc+1] = 0;
+				matriz[jf+1][jc] = 0;
+			}
+			if(matriz[jf][jc+1] == matriz[jf-1][jc]) {
+				int puntos=getPuntos();
+				setPuntos(puntos+5);
+				matriz[jf][jc+1] = 0;
+				matriz[jf-1][jc] = 0;
+			}
+		}
+		catch(Exception e) {
+			System.out.print("xd");
+		}
+		return matriz;
+	}
+	
 }
