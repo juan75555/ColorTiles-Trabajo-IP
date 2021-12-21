@@ -3,14 +3,14 @@ public class Tablero {
 	private int filas,columnas,vidas,puntos;
 	private double dificultad;
 	private int[][] matriz = new int[filas][columnas];
-	public static final String ANSI_BLACK = "\u001B[30m";
-	public static final String ANSI_RED = "\u001B[31m";
-	public static final String ANSI_GREEN = "\u001B[32m";
-	public static final String ANSI_YELLOW = "\u001B[33m";
-	public static final String ANSI_BLUE = "\u001B[34m";
-	public static final String ANSI_PURPLE = "\u001B[35m";
-	public static final String ANSI_CYAN = "\u001B[36m";
-	public static final String ANSI_WHITE = "\u001B[37m";
+	public static final String ANSI_BLACK = "\033[30m";
+	public static final String ANSI_RED = "\033[31m";
+	public static final String ANSI_GREEN = "\033[32m";
+	public static final String ANSI_YELLOW = "\033[33m";
+	public static final String ANSI_BLUE = "\033[34m";
+	public static final String ANSI_PURPLE = "\033[35m";
+	public static final String ANSI_CYAN = "\033[36m";
+	public static final String ANSI_WHITE = "\033[37m";
 	public static final String ANSI_RESET = "\u001B[0m";
 	
 	Tablero() {
@@ -73,21 +73,44 @@ public class Tablero {
 		}
 		return matriz;
 	}
+	public void ColoresTablero(int numero) {
+		if(numero==0) {
+			System.out.print(ANSI_WHITE+numero+" ");
+		}
+		else if(numero==1) {
+			System.out.print(ANSI_RED+numero+" ");
+		}
+		else if (numero==2) {
+			System.out.print(ANSI_BLUE+numero+" ");
+		}
+		else if (numero==3) {
+			System.out.print(ANSI_GREEN+numero+" ");
+		}
+		else if(numero==4) {
+			System.out.print(ANSI_PURPLE+numero+" ");
+		}
+		else if (numero==5) {
+			System.out.print(ANSI_YELLOW+numero+" ");
+		}
+		else {
+			System.out.print(ANSI_CYAN+numero+" ");
+		}
+		System.out.print(ANSI_RESET);
+	}
 	public void ImprimeTablero(int[][] matriz) {
 		for(int i = 0; i<getColumnas();i++) {
-			System.out.print("-");
+			System.out.print("-------");
 		}
 		for(int i = 0; i<matriz.length; i++) {
 			System.out.println();
 			for(int j = 0; j<matriz.length; j++) {
-				System.out.print(matriz[i][j]+" ");
+				ColoresTablero(matriz[i][j]);
 			}
 		}
 		System.out.println("");
 		for(int i = 0; i<getColumnas();i++) {
-			System.out.print("-");
+			System.out.print("-------");
 		}
 		System.out.printf("\nVidas: %d Puntos: %d",getVidas(),getPuntos());
 	}
-	
 }
