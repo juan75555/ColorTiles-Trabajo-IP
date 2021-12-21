@@ -126,23 +126,27 @@ public class Tablero {
 				matriz[jf][jc-1]=0;
 				matriz[jf+1][jc]=0;
 			}
-			if(matriz[jf][jc-1] == matriz[jf-1][jc]) {
+			else if(matriz[jf][jc-1] == matriz[jf-1][jc]) {
 				int puntos=getPuntos();
 				setPuntos(puntos+5);
 				matriz[jf][jc-1]=0;
 				matriz[jf-1][jc]=0;
 			}
-			if(matriz[jf][jc+1] == matriz[jf+1][jc]) {
+			else if(matriz[jf][jc+1] == matriz[jf+1][jc]) {
 				int puntos=getPuntos();
 				setPuntos(puntos+5);
 				matriz[jf][jc+1] = 0;
 				matriz[jf+1][jc] = 0;
 			}
-			if(matriz[jf][jc+1] == matriz[jf-1][jc]) {
+			else if(matriz[jf][jc+1] == matriz[jf-1][jc]) {
 				int puntos=getPuntos();
 				setPuntos(puntos+5);
 				matriz[jf][jc+1] = 0;
 				matriz[jf-1][jc] = 0;
+			}
+			else {
+				int vidas = getVidas();
+				setVidas(vidas-1);
 			}
 		}
 		catch(Exception e) {
