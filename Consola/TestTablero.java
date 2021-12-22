@@ -15,7 +15,7 @@ public class Main {
 			System.out.printf("\n\033[31m %s LOSE!!! :(",t.getName());
 			teclado.close();
 		}
-		if (t.getPuntos() >=t.MaximasJugadas()) {
+		if (t.MaximasJugadas()==0) {
 			System.out.printf("\n\033[32m %s WIN!!! :)",t.getName());
 			teclado.close();
 		}
