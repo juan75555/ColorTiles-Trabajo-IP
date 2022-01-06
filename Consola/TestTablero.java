@@ -12,11 +12,11 @@ public class Main {
 			System.out.print("\nMaximos Puntos Posibles: "+t.MaximasJugadas()+"\n");
 		}
 		if (t.getVidas() == 0) {
-			System.out.printf("\n\033[31m %s LOSE!!! :(",t.getName());
+			System.out.printf("\n\033[31m %s LOSE!!! :( \n\u001B[0m",t.getName());
 			teclado.close();
 		}
 		if (t.MaximasJugadas()==0) {
-			System.out.printf("\n\033[32m %s WIN!!! :)",t.getName());
+			System.out.printf("\n\033[32m %s WIN!!! :) \n\u001B[0m",t.getName());
 			teclado.close();
 		}
 	}
