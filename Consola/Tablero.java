@@ -11,16 +11,10 @@ public class Tablero {
 	public static final String ANSI_BLUE = "\033[34m";
 	public static final String ANSI_PURPLE = "\033[35m";
 	public static final String ANSI_CYAN = "\033[36m";
+	public static final String ANSI_PINK = "\033[38;2;255;0;162m"; //ROSY PINK
+	public static final String ANSI_ORANGE = "\033[38;2;225;153;0m"; //ORANGE
 	public static final String ANSI_WHITE = "\033[37m";
 	public static final String ANSI_RESET = "\u001B[0m";
-	public static final String BLACK_BACKGROUND = "\033[40m";  // BLACK
-    public static final String RED_BACKGROUND = "\033[41m";    // RED
-    public static final String GREEN_BACKGROUND = "\033[42m";  // GREEN
-    public static final String YELLOW_BACKGROUND = "\033[43m"; // YELLOW
-    public static final String BLUE_BACKGROUND = "\033[44m";   // BLUE
-    public static final String PURPLE_BACKGROUND = "\033[45m"; // PURPLE
-    public static final String CYAN_BACKGROUND = "\033[46m";   // CYAN
-    public static final String WHITE_BACKGROUND = "\033[47m";  // WHITE
 	Tablero() {
 		//El constructor debe tener los parámetros oportunos 
 		//para inicializar el tablero y el juego
@@ -132,25 +126,25 @@ public class Tablero {
 	}
 	public void ColoresTablero(int numero) {
 		if(numero==0) {
-			System.out.print(ANSI_WHITE+numero+" ");
+			System.out.print(ANSI_WHITE+"- ");
 		}
 		else if(numero==1) {
-			System.out.print(ANSI_RED+numero+" ");
+			System.out.print(ANSI_RED+"R ");
 		}
 		else if (numero==2) {
-			System.out.print(ANSI_BLUE+numero+" ");
+			System.out.print(ANSI_BLUE+"B ");
 		}
 		else if (numero==3) {
-			System.out.print(ANSI_GREEN+numero+" ");
+			System.out.print(ANSI_GREEN+"G ");
 		}
 		else if(numero==4) {
-			System.out.print(ANSI_PURPLE+numero+" ");
+			System.out.print(ANSI_ORANGE+"O ");
 		}
 		else if (numero==5) {
-			System.out.print(ANSI_YELLOW+numero+" ");
+			System.out.print(ANSI_YELLOW+"Y ");
 		}
 		else {
-			System.out.print(ANSI_CYAN+numero+" ");
+			System.out.print(ANSI_PINK+"P ");
 		}
 		System.out.print(ANSI_RESET);
 	}
@@ -274,14 +268,14 @@ public class Tablero {
 	}
 	public int[][] Jugada(int jf,int jc){
 		try {
-			if(matriz[jf][jc-1] == matriz[jf+1][jc] && matriz[jf][jc-1] == matriz[jf+1][jc]  && matriz[jf][jc] == 0 && matriz[jf][jc-1]!=0) {
+			if(matriz[jf][jc-1] == matriz[jf+1][jc] && matriz[jf][jc-1] == matriz[jf-1][jc]  && matriz[jf][jc] == 0 && matriz[jf][jc-1]!=0) {
 				int puntos=getPuntos();
 				setPuntos(puntos+10);
 				matriz[jf][jc-1]=0;
 				matriz[jf+1][jc]=0;
 				matriz[jf-1][jc]=0;
 			}
-			else if(matriz[jf][jc+1] == matriz[jf+1][jc] &&matriz[jf][jc+1] == matriz[jf-1][jc] && matriz[jf][jc] == 0 && matriz[jf][jc+1]!=0) {
+			else if(matriz[jf][jc+1] == matriz[jf+1][jc] && matriz[jf][jc+1] == matriz[jf-1][jc] && matriz[jf][jc] == 0 && matriz[jf][jc+1]!=0) {
 				int puntos=getPuntos();
 				setPuntos(puntos+10);
 				matriz[jf][jc+1] = 0;
