@@ -58,9 +58,9 @@ public class TestTablero {
 				System.out.print("\nIntroduce el nuevo numero de columnas: ");
 				columnas = teclado.nextInt();
 			}
-			while(dificultad<=0 && dificultad>=1) {
+			while(dificultad<=0 || dificultad>=1) {
 				System.out.printf("\nDificultad introducida %.2f debe ser (0,1-0,9).",dificultad);
-				System.out.print("Introduce una nueva dificultad (0,1-0,9): ");
+				System.out.print("\nIntroduce una nueva dificultad (0,1-0,9): ");
 				dificultad = teclado.nextDouble();
 			}
 			t = new Tablero(name,filas,columnas,dificultad);
