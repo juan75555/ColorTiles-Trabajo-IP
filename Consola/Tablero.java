@@ -1,4 +1,3 @@
-
 public class Tablero {
 	private int filas,columnas,vidas,puntos;
 	private double dificultad;
@@ -27,13 +26,11 @@ public class Tablero {
 		matriz = new int[getFilas()][getColumnas()];
 		this.setMatriz(GeneraTablero());
 	}
-	Tablero(String name,int filas, int columnas) {
-		//El constructor debe tener los parámetros oportunos 
-		//para inicializar el tablero y el juego
+	Tablero(String name,int filas, int columnas,double dificultad) {
 		this.setName(name);
 		this.setFilas(filas);
 		this.setColumnas(columnas);
-		this.setDificultad(0.5);
+		this.setDificultad(dificultad);
 		this.setVidas(3);
 		this.setPuntos(0);
 		matriz = new int[getFilas()][getColumnas()];
@@ -60,7 +57,7 @@ public class Tablero {
 	}
 
 	public void setDificultad(double dificultad) {
-		this.dificultad = dificultad;
+		if(dificultad<1 && dificultad>0) this.dificultad = dificultad;
 	}
 
 	public int getFilas() {
@@ -102,7 +99,7 @@ public class Tablero {
 				matriz[i][j] = (int) (Math.random()*7);
 			}
 		}
-		if((getColumnas()*getFilas())%2==0){
+		if(((getColumnas()*getFilas())*getDificultad())%2==0){
 			while(DificultadCorrecta()!=(getColumnas()*getFilas())*getDificultad()){
 				int i = (int) (Math.random()*getFilas());
 				int j = (int) (Math.random()*getColumnas());
@@ -182,16 +179,16 @@ public class Tablero {
 						max += 5;
 					}
 					else if(matriz[i][j-1] == matriz[i+1][j] && matriz[i][j] == 0 && matriz[i][j-1]!=0 ) {
-						max += 5;
+						max += 2;
 					}
 					else if(matriz[i][j-1] == matriz[i-1][j] && matriz[i][j] == 0 && matriz[i][j-1]!=0) {
-						max += 5;
+						max += 2;
 					}
 					else if(matriz[i][j+1] == matriz[i+1][j] && matriz[i][j] == 0 && matriz[i][j+1]!=0) {
-						max += 5;
+						max += 2;
 					}
 					else if(matriz[i][j+1] == matriz[i-1][j] && matriz[i][j] == 0 && matriz[i][j+1]!=0) {
-						max += 5;
+						max += 2;
 					}
 				}
 				catch(Exception e) {
@@ -200,58 +197,58 @@ public class Tablero {
 							max += 5;
 						}
 						else if(matriz[i][j-1] == matriz[i+1][j] && matriz[i][j] == 0 && matriz[i][j-1]!=0 ) {
-							max += 5;
+							max += 2;
 						}
 						else if(matriz[i][j-1] == matriz[i-1][j] && matriz[i][j] == 0 && matriz[i][j-1]!=0) {
-							max += 5;
+							max += 2;
 						}
 						else if(matriz[i][j+1] == matriz[i+1][j] && matriz[i][j] == 0 && matriz[i][j+1]!=0) {
-							max += 5;
+							max += 2;
 						}
 						else if(matriz[i][j+1] == matriz[i-1][j] && matriz[i][j] == 0 && matriz[i][j+1]!=0) {
-							max += 5;
+							max += 2;
 						}
 					}
 					catch(Exception x) {
 						try {
 							if(matriz[i][j-1] == matriz[i+1][j] && matriz[i][j] == 0 && matriz[i][j-1]!=0 ) {
-								max += 5;
+								max += 2;
 							}
 							else if(matriz[i][j-1] == matriz[i-1][j] && matriz[i][j] == 0 && matriz[i][j-1]!=0) {
-								max += 5;
+								max += 2;
 							}
 							else if(matriz[i][j+1] == matriz[i+1][j] && matriz[i][j] == 0 && matriz[i][j+1]!=0) {
-								max += 5;
+								max += 2;
 							}
 							else if(matriz[i][j+1] == matriz[i-1][j] && matriz[i][j] == 0 && matriz[i][j+1]!=0) {
-								max += 5;
+								max += 2;
 							}
 						}
 						catch(Exception y) {
 							try {
 								if(matriz[i][j-1] == matriz[i-1][j] && matriz[i][j] == 0 && matriz[i][j-1]!=0) {
-									max += 5;
+									max += 2;
 								}
 								else if(matriz[i][j+1] == matriz[i+1][j] && matriz[i][j] == 0 && matriz[i][j+1]!=0) {
-									max += 5;
+									max += 2;
 								}
 								else if(matriz[i][j+1] == matriz[i-1][j] && matriz[i][j] == 0 && matriz[i][j+1]!=0) {
-									max += 5;
+									max += 2;
 								}
 							}
 							catch(Exception z) {
 								try {
 									if(matriz[i][j+1] == matriz[i+1][j] && matriz[i][j] == 0 && matriz[i][j+1]!=0) {
-										max += 5;
+										max += 2;
 									}
 									else if(matriz[i][j+1] == matriz[i-1][j] && matriz[i][j] == 0 && matriz[i][j+1]!=0) {
-										max += 5;
+										max += 2;
 									}
 								}
 								catch(Exception p) {
 									try {
 										if(matriz[i][j+1] == matriz[i-1][j] && matriz[i][j] == 0 && matriz[i][j+1]!=0) {
-											max += 5;
+											max += 2;
 										}
 									}
 									catch(Exception o) {
