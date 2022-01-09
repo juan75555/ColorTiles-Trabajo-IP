@@ -172,87 +172,311 @@ public class Tablero {
 		for(int i = 0; i<matriz.length; i++) {
 			for(int j = 0; j<matriz[i].length;j++) {
 				try {
-					if(matriz[i][j-1] == matriz[i+1][j] && matriz[i][j-1] == matriz[i-1][j] && matriz[i][j] == 0 && matriz[i][j-1]!=0) {
+					if(matriz[i][j+1] == matriz[i+1][j] && matriz[i][j+1] == matriz[i-1][j] && matriz[i][j+1] == matriz[i][j-1] && matriz[i][j] == 0 && matriz[i][j+1]!=0) {
+						max += 10;
+						System.out.printf("\nJugada: %d %d", i,j);
+					}
+					else if(matriz[i][j+1] == matriz[i+1][j] && matriz[i-1][j] == matriz[i][j-1] && matriz[i][j] == 0 && matriz[i][j+1]!=0 && matriz[i-1][j]!=0) {
+						max += 10;
+						System.out.printf("\nJugada: %d %d", i,j);
+					}
+					else if(matriz[i][j+1] == matriz[i-1][j] && matriz[i+1][j] == matriz[i][j-1] && matriz[i][j] == 0 && matriz[i][j+1]!=0 && matriz[i-1][j]!=0) {
+						max += 10;
+						System.out.printf("\nJugada: %d %d", i,j);
+					}
+					else if(matriz[i][j-1] == matriz[i+1][j] && matriz[i][j-1] == matriz[i-1][j] && matriz[i][j] == 0 && matriz[i][j-1]!=0) {
 						max += 5;
+						System.out.printf("\nJugada: %d %d", i,j);
 					}
 					else if(matriz[i][j+1] == matriz[i+1][j] && matriz[i][j+1] == matriz[i-1][j] && matriz[i][j] == 0 && matriz[i][j+1]!=0) {
 						max += 5;
+						System.out.printf("\nJugada: %d %d", i,j);
+					}
+					else if(matriz[i][j-1] == matriz[i][j+1] && matriz[i][j-1]!=0 && matriz[i][j] == 0) {
+						max += 2;
+						System.out.printf("\nJugada: %d %d", i,j);
+					}
+					else if(matriz[i+1][j] == matriz[i-1][j] && matriz[i+1][j]!=0 && matriz[i][j] == 0) {
+						max += 2;
+						System.out.printf("\nJugada: %d %d", i,j);
 					}
 					else if(matriz[i][j-1] == matriz[i+1][j] && matriz[i][j] == 0 && matriz[i][j-1]!=0 ) {
 						max += 2;
+						System.out.printf("\nJugada: %d %d", i,j);
 					}
 					else if(matriz[i][j-1] == matriz[i-1][j] && matriz[i][j] == 0 && matriz[i][j-1]!=0) {
 						max += 2;
+						System.out.printf("\nJugada: %d %d", i,j);
 					}
 					else if(matriz[i][j+1] == matriz[i+1][j] && matriz[i][j] == 0 && matriz[i][j+1]!=0) {
 						max += 2;
+						System.out.printf("\nJugada: %d %d", i,j);
 					}
 					else if(matriz[i][j+1] == matriz[i-1][j] && matriz[i][j] == 0 && matriz[i][j+1]!=0) {
 						max += 2;
+						System.out.printf("\nJugada: %d %d", i,j);
 					}
 				}
 				catch(Exception e) {
 					try {
-						if(matriz[i][j+1] == matriz[i+1][j] && matriz[i][j+1] == matriz[i-1][j] && matriz[i][j] == 0 && matriz[i][j+1]!=0) {
+						if(matriz[i][j+1] == matriz[i+1][j] && matriz[i-1][j] == matriz[i][j-1] && matriz[i][j] == 0 && matriz[i][j+1]!=0 && matriz[i-1][j]!=0) {
+							max += 10;
+							System.out.printf("\nJugada: %d %d", i,j);
+						}
+						else if(matriz[i][j+1] == matriz[i-1][j] && matriz[i+1][j] == matriz[i][j-1] && matriz[i][j] == 0 && matriz[i][j+1]!=0 && matriz[i-1][j]!=0) {
+							max += 10;
+							System.out.printf("\nJugada: %d %d", i,j);
+						}
+						else if(matriz[i][j-1] == matriz[i+1][j] && matriz[i][j-1] == matriz[i-1][j] && matriz[i][j] == 0 && matriz[i][j-1]!=0) {
 							max += 5;
+							System.out.printf("\nJugada: %d %d", i,j);
+						}
+						else if(matriz[i][j+1] == matriz[i+1][j] && matriz[i][j+1] == matriz[i-1][j] && matriz[i][j] == 0 && matriz[i][j+1]!=0) {
+							max += 5;
+							System.out.printf("\nJugada: %d %d", i,j);
+						}
+						else if(matriz[i][j-1] == matriz[i][j+1] && matriz[i][j-1]!=0 && matriz[i][j] == 0) {
+							max += 2;
+							System.out.printf("\nJugada: %d %d", i,j);
+						}
+						else if(matriz[i+1][j] == matriz[i-1][j] && matriz[i+1][j]!=0 && matriz[i][j] == 0) {
+							max += 2;
+							System.out.printf("\nJugada: %d %d", i,j);
 						}
 						else if(matriz[i][j-1] == matriz[i+1][j] && matriz[i][j] == 0 && matriz[i][j-1]!=0 ) {
 							max += 2;
+							System.out.printf("\nJugada: %d %d", i,j);
 						}
 						else if(matriz[i][j-1] == matriz[i-1][j] && matriz[i][j] == 0 && matriz[i][j-1]!=0) {
 							max += 2;
+							System.out.printf("\nJugada: %d %d", i,j);
 						}
 						else if(matriz[i][j+1] == matriz[i+1][j] && matriz[i][j] == 0 && matriz[i][j+1]!=0) {
 							max += 2;
+							System.out.printf("\nJugada: %d %d", i,j);
 						}
 						else if(matriz[i][j+1] == matriz[i-1][j] && matriz[i][j] == 0 && matriz[i][j+1]!=0) {
 							max += 2;
+							System.out.printf("\nJugada: %d %d", i,j);
 						}
 					}
 					catch(Exception x) {
 						try {
-							if(matriz[i][j-1] == matriz[i+1][j] && matriz[i][j] == 0 && matriz[i][j-1]!=0 ) {
+							if(matriz[i][j+1] == matriz[i-1][j] && matriz[i+1][j] == matriz[i][j-1] && matriz[i][j] == 0 && matriz[i][j+1]!=0 && matriz[i-1][j]!=0) {
+								max += 10;
+								System.out.printf("\nJugada: %d %d", i,j);
+							}
+							else if(matriz[i][j-1] == matriz[i+1][j] && matriz[i][j-1] == matriz[i-1][j] && matriz[i][j] == 0 && matriz[i][j-1]!=0) {
+								max += 5;
+								System.out.printf("\nJugada: %d %d", i,j);
+							}
+							else if(matriz[i][j+1] == matriz[i+1][j] && matriz[i][j+1] == matriz[i-1][j] && matriz[i][j] == 0 && matriz[i][j+1]!=0) {
+								max += 5;
+								System.out.printf("\nJugada: %d %d", i,j);
+							}
+							else if(matriz[i][j-1] == matriz[i][j+1] && matriz[i][j-1]!=0 && matriz[i][j] == 0) {
 								max += 2;
+								System.out.printf("\nJugada: %d %d", i,j);
+							}
+							else if(matriz[i+1][j] == matriz[i-1][j] && matriz[i+1][j]!=0 && matriz[i][j] == 0) {
+								max += 2;
+								System.out.printf("\nJugada: %d %d", i,j);
+							}
+							else if(matriz[i][j-1] == matriz[i+1][j] && matriz[i][j] == 0 && matriz[i][j-1]!=0 ) {
+								max += 2;
+								System.out.printf("\nJugada: %d %d", i,j);
 							}
 							else if(matriz[i][j-1] == matriz[i-1][j] && matriz[i][j] == 0 && matriz[i][j-1]!=0) {
 								max += 2;
+								System.out.printf("\nJugada: %d %d", i,j);
 							}
 							else if(matriz[i][j+1] == matriz[i+1][j] && matriz[i][j] == 0 && matriz[i][j+1]!=0) {
 								max += 2;
+								System.out.printf("\nJugada: %d %d", i,j);
 							}
 							else if(matriz[i][j+1] == matriz[i-1][j] && matriz[i][j] == 0 && matriz[i][j+1]!=0) {
 								max += 2;
+								System.out.printf("\nJugada: %d %d", i,j);
 							}
 						}
 						catch(Exception y) {
 							try {
-								if(matriz[i][j-1] == matriz[i-1][j] && matriz[i][j] == 0 && matriz[i][j-1]!=0) {
+								if(matriz[i][j-1] == matriz[i+1][j] && matriz[i][j-1] == matriz[i-1][j] && matriz[i][j] == 0 && matriz[i][j-1]!=0) {
+									max += 5;
+									System.out.printf("\nJugada: %d %d", i,j);
+								}
+								else if(matriz[i][j+1] == matriz[i+1][j] && matriz[i][j+1] == matriz[i-1][j] && matriz[i][j] == 0 && matriz[i][j+1]!=0) {
+									max += 5;
+									System.out.printf("\nJugada: %d %d", i,j);
+								}
+								else if(matriz[i][j-1] == matriz[i][j+1] && matriz[i][j-1]!=0 && matriz[i][j] == 0) {
 									max += 2;
+									System.out.printf("\nJugada: %d %d", i,j);
+								}
+								else if(matriz[i+1][j] == matriz[i-1][j] && matriz[i+1][j]!=0 && matriz[i][j] == 0) {
+									max += 2;
+									System.out.printf("\nJugada: %d %d", i,j);
+								}
+								else if(matriz[i][j-1] == matriz[i+1][j] && matriz[i][j] == 0 && matriz[i][j-1]!=0 ) {
+									max += 2;
+									System.out.printf("\nJugada: %d %d", i,j);
+								}
+								else if(matriz[i][j-1] == matriz[i-1][j] && matriz[i][j] == 0 && matriz[i][j-1]!=0) {
+									max += 2;
+									System.out.printf("\nJugada: %d %d", i,j);
 								}
 								else if(matriz[i][j+1] == matriz[i+1][j] && matriz[i][j] == 0 && matriz[i][j+1]!=0) {
 									max += 2;
+									System.out.printf("\nJugada: %d %d", i,j);
 								}
 								else if(matriz[i][j+1] == matriz[i-1][j] && matriz[i][j] == 0 && matriz[i][j+1]!=0) {
 									max += 2;
+									System.out.printf("\nJugada: %d %d", i,j);
 								}
 							}
 							catch(Exception z) {
 								try {
-									if(matriz[i][j+1] == matriz[i+1][j] && matriz[i][j] == 0 && matriz[i][j+1]!=0) {
+									if(matriz[i][j+1] == matriz[i+1][j] && matriz[i][j+1] == matriz[i-1][j] && matriz[i][j] == 0 && matriz[i][j+1]!=0) {
+										max += 5;
+										System.out.printf("\nJugada: %d %d", i,j);
+									}
+									else if(matriz[i][j-1] == matriz[i][j+1] && matriz[i][j-1]!=0 && matriz[i][j] == 0) {
 										max += 2;
+										System.out.printf("\nJugada: %d %d", i,j);
+									}
+									else if(matriz[i+1][j] == matriz[i-1][j] && matriz[i+1][j]!=0 && matriz[i][j] == 0) {
+										max += 2;
+										System.out.printf("\nJugada: %d %d", i,j);
+									}
+									else if(matriz[i][j-1] == matriz[i+1][j] && matriz[i][j] == 0 && matriz[i][j-1]!=0 ) {
+										max += 2;
+										System.out.printf("\nJugada: %d %d", i,j);
+									}
+									else if(matriz[i][j-1] == matriz[i-1][j] && matriz[i][j] == 0 && matriz[i][j-1]!=0) {
+										max += 2;
+										System.out.printf("\nJugada: %d %d", i,j);
+									}
+									else if(matriz[i][j+1] == matriz[i+1][j] && matriz[i][j] == 0 && matriz[i][j+1]!=0) {
+										max += 2;
+										System.out.printf("\nJugada: %d %d", i,j);
 									}
 									else if(matriz[i][j+1] == matriz[i-1][j] && matriz[i][j] == 0 && matriz[i][j+1]!=0) {
 										max += 2;
+										System.out.printf("\nJugada: %d %d", i,j);
 									}
 								}
-								catch(Exception p) {
+								catch (Exception r) {
 									try {
-										if(matriz[i][j+1] == matriz[i-1][j] && matriz[i][j] == 0 && matriz[i][j+1]!=0) {
+										if(matriz[i][j-1] == matriz[i][j+1] && matriz[i][j-1]!=0 && matriz[i][j] == 0) {
 											max += 2;
+											System.out.printf("\nJugada: %d %d", i,j);
+										}
+										else if(matriz[i+1][j] == matriz[i-1][j] && matriz[i+1][j]!=0 && matriz[i][j] == 0) {
+											max += 2;
+											System.out.printf("\nJugada: %d %d", i,j);
+										}
+										else if(matriz[i][j-1] == matriz[i+1][j] && matriz[i][j] == 0 && matriz[i][j-1]!=0 ) {
+											max += 2;
+											System.out.printf("\nJugada: %d %d", i,j);
+										}
+										else if(matriz[i][j-1] == matriz[i-1][j] && matriz[i][j] == 0 && matriz[i][j-1]!=0) {
+											max += 2;
+											System.out.printf("\nJugada: %d %d", i,j);
+										}
+										else if(matriz[i][j+1] == matriz[i+1][j] && matriz[i][j] == 0 && matriz[i][j+1]!=0) {
+											max += 2;
+											System.out.printf("\nJugada: %d %d", i,j);
+										}
+										else if(matriz[i][j+1] == matriz[i-1][j] && matriz[i][j] == 0 && matriz[i][j+1]!=0) {
+											max += 2;
+											System.out.printf("\nJugada: %d %d", i,j);
 										}
 									}
-									catch(Exception o) {
-										j++;
+									catch(Exception t) {
+										try {
+											if(matriz[i+1][j] == matriz[i-1][j] && matriz[i+1][j]!=0 && matriz[i][j] == 0) {
+												max += 2;
+												System.out.printf("\nJugada: %d %d", i,j);
+											}
+											else if(matriz[i][j-1] == matriz[i+1][j] && matriz[i][j] == 0 && matriz[i][j-1]!=0 ) {
+												max += 2;
+												System.out.printf("\nJugada: %d %d", i,j);
+											}
+											else if(matriz[i][j-1] == matriz[i-1][j] && matriz[i][j] == 0 && matriz[i][j-1]!=0) {
+												max += 2;
+												System.out.printf("\nJugada: %d %d", i,j);
+											}
+											else if(matriz[i][j+1] == matriz[i+1][j] && matriz[i][j] == 0 && matriz[i][j+1]!=0) {
+												max += 2;
+												System.out.printf("\nJugada: %d %d", i,j);
+											}
+											else if(matriz[i][j+1] == matriz[i-1][j] && matriz[i][j] == 0 && matriz[i][j+1]!=0) {
+												max += 2;
+												System.out.printf("\nJugada: %d %d", i,j);
+											}
+										}
+										catch(Exception p) {
+											try {
+												if(matriz[i][j-1] == matriz[i+1][j] && matriz[i][j] == 0 && matriz[i][j-1]!=0 ) {
+													max += 2;
+													System.out.printf("\nJugada: %d %d", i,j);
+												}
+												else if(matriz[i][j-1] == matriz[i-1][j] && matriz[i][j] == 0 && matriz[i][j-1]!=0) {
+													max += 2;
+													System.out.printf("\nJugada: %d %d", i,j);
+												}
+												else if(matriz[i][j+1] == matriz[i+1][j] && matriz[i][j] == 0 && matriz[i][j+1]!=0) {
+													max += 2;
+													System.out.printf("\nJugada: %d %d", i,j);
+												}
+												else if(matriz[i][j+1] == matriz[i-1][j] && matriz[i][j] == 0 && matriz[i][j+1]!=0) {
+													max += 2;
+													System.out.printf("\nJugada: %d %d", i,j);
+												}
+											}
+											catch(Exception o) {
+												try {
+													if(matriz[i][j-1] == matriz[i-1][j] && matriz[i][j] == 0 && matriz[i][j-1]!=0) {
+														max += 2;
+														System.out.printf("\nJugada: %d %d", i,j);
+													}
+													else if(matriz[i][j+1] == matriz[i+1][j] && matriz[i][j] == 0 && matriz[i][j+1]!=0) {
+														max += 2;
+														System.out.printf("\nJugada: %d %d", i,j);
+													}
+													else if(matriz[i][j+1] == matriz[i-1][j] && matriz[i][j] == 0 && matriz[i][j+1]!=0) {
+														max += 2;
+														System.out.printf("\nJugada: %d %d", i,j);
+													}
+												}
+												catch(Exception f) {
+													try {
+														if(matriz[i][j+1] == matriz[i+1][j] && matriz[i][j] == 0 && matriz[i][j+1]!=0) {
+															max += 2;
+															System.out.printf("\nJugada: %d %d", i,j);
+														}
+														else if(matriz[i][j+1] == matriz[i-1][j] && matriz[i][j] == 0 && matriz[i][j+1]!=0) {
+															max += 2;
+															System.out.printf("\nJugada: %d %d", i,j);
+														}
+													}
+													catch(Exception w) {
+														try {
+															if(matriz[i][j+1] == matriz[i-1][j] && matriz[i][j] == 0 && matriz[i][j+1]!=0) {
+																max += 2;
+																System.out.printf("\nJugada: %d %d", i,j);
+															}
+															else {
+																j++;
+															}
+														}
+														catch(Exception s) {
+															j++;
+														}
+													}
+												}
+											}
+										}
 									}
 								}
 							}
@@ -265,41 +489,77 @@ public class Tablero {
 	}
 	public int[][] Jugada(int jf,int jc){
 		try {
-			if(matriz[jf][jc-1] == matriz[jf+1][jc] && matriz[jf][jc-1] == matriz[jf-1][jc]  && matriz[jf][jc] == 0 && matriz[jf][jc-1]!=0) {
+			if(matriz[jf][jc-1] == matriz[jf+1][jc] && matriz[jf][jc-1] == matriz[jf-1][jc] && matriz[jf][jc-1] == matriz[jf][jc+1]  && matriz[jf][jc] == 0 && matriz[jf][jc-1]!=0) {
 				int puntos=getPuntos();
 				setPuntos(puntos+10);
+				matriz[jf][jc-1] = 0;
+				matriz[jf+1][jc] = 0;
+				matriz[jf-1][jc] = 0;
+				matriz[jf][jc+1] = 0;
+			}
+			else if(matriz[jf][jc-1] == matriz[jf+1][jc] && matriz[jf][jc+1] == matriz[jf+1][jc] && matriz[jf][jc-1]!=0 && matriz[jf][jc+1]!=0 && matriz[jf][jc] == 0) {
+				int puntos=getPuntos();
+				setPuntos(puntos+10);
+				matriz[jf][jc-1] = 0;
+				matriz[jf+1][jc] = 0;
+				matriz[jf-1][jc] = 0;
+				matriz[jf][jc+1] = 0;
+			}
+			else if(matriz[jf][jc-1] == matriz[jf][jc+1] && matriz[jf+1][jc] == matriz[jf+1][jc] && matriz[jf][jc-1]!=0 && matriz[jf+1][jc]!=0 && matriz[jf][jc] == 0) {
+				int puntos=getPuntos();
+				setPuntos(puntos+10);
+				matriz[jf][jc-1] = 0;
+				matriz[jf+1][jc] = 0;
+				matriz[jf-1][jc] = 0;
+				matriz[jf][jc+1] = 0;
+			}
+			else if(matriz[jf][jc-1] == matriz[jf+1][jc] && matriz[jf][jc-1] == matriz[jf-1][jc]  && matriz[jf][jc] == 0 && matriz[jf][jc-1]!=0) {
+				int puntos=getPuntos();
+				setPuntos(puntos+5);
 				matriz[jf][jc-1]=0;
 				matriz[jf+1][jc]=0;
 				matriz[jf-1][jc]=0;
 			}
 			else if(matriz[jf][jc+1] == matriz[jf+1][jc] && matriz[jf][jc+1] == matriz[jf-1][jc] && matriz[jf][jc] == 0 && matriz[jf][jc+1]!=0) {
 				int puntos=getPuntos();
-				setPuntos(puntos+10);
+				setPuntos(puntos+5);
 				matriz[jf][jc+1] = 0;
 				matriz[jf+1][jc] = 0;
 				matriz[jf-1][jc] = 0;
 			}
+			else if(matriz[jf][jc-1] == matriz[jf][jc+1] && matriz[jf][jc] == 0 && matriz[jf][jc-1]!=0) {
+				int puntos=getPuntos();
+				setPuntos(puntos+2);
+				matriz[jf][jc-1] = 0;
+				matriz[jf][jc+1] = 0;
+			}
+			else if(matriz[jf-1][jc] == matriz[jf+1][jc] && matriz[jf][jc] == 0 && matriz[jf-1][jc]!=0) {
+				int puntos=getPuntos();
+				setPuntos(puntos+2);
+				matriz[jf-1][jc] = 0;
+				matriz[jf+1][jc] = 0;
+			}
 			else if(matriz[jf][jc-1] == matriz[jf+1][jc] && matriz[jf][jc] == 0 && matriz[jf][jc-1]!=0) {
 				int puntos=getPuntos();
-				setPuntos(puntos+5);
+				setPuntos(puntos+2);
 				matriz[jf][jc-1]=0;
 				matriz[jf+1][jc]=0;
 			}
 			else if(matriz[jf][jc-1] == matriz[jf-1][jc] && matriz[jf][jc] == 0 && matriz[jf][jc-1]!=0) {
 				int puntos=getPuntos();
-				setPuntos(puntos+5);
+				setPuntos(puntos+2);
 				matriz[jf][jc-1]=0;
 				matriz[jf-1][jc]=0;
 			}
 			else if(matriz[jf][jc+1] == matriz[jf+1][jc] && matriz[jf][jc] == 0 && matriz[jf][jc+1]!=0) {
 				int puntos=getPuntos();
-				setPuntos(puntos+5);
+				setPuntos(puntos+2);
 				matriz[jf][jc+1] = 0;
 				matriz[jf+1][jc] = 0;
 			}
 			else if(matriz[jf][jc+1] == matriz[jf-1][jc] && matriz[jf][jc] == 0 && matriz[jf][jc+1]!=0) {
 				int puntos=getPuntos();
-				setPuntos(puntos+5);
+				setPuntos(puntos+2);
 				matriz[jf][jc+1] = 0;
 				matriz[jf-1][jc] = 0;
 			}
@@ -310,34 +570,69 @@ public class Tablero {
 		}
 		catch(Exception e) {
 			try {
-				if(matriz[jf][jc+1] == matriz[jf+1][jc] &&matriz[jf][jc+1] == matriz[jf-1][jc] && matriz[jf][jc] == 0 && matriz[jf][jc+1]!=0) {
+				if(matriz[jf][jc-1] == matriz[jf+1][jc] && matriz[jf][jc+1] == matriz[jf+1][jc] && matriz[jf][jc-1]!=0 && matriz[jf][jc+1]!=0 && matriz[jf][jc] == 0) {
 					int puntos=getPuntos();
 					setPuntos(puntos+10);
+					matriz[jf][jc-1] = 0;
+					matriz[jf+1][jc] = 0;
+					matriz[jf-1][jc] = 0;
+					matriz[jf][jc+1] = 0;
+				}
+				else if(matriz[jf][jc-1] == matriz[jf][jc+1] && matriz[jf+1][jc] == matriz[jf+1][jc] && matriz[jf][jc-1]!=0 && matriz[jf+1][jc]!=0 && matriz[jf][jc] == 0) {
+					int puntos=getPuntos();
+					setPuntos(puntos+10);
+					matriz[jf][jc-1] = 0;
+					matriz[jf+1][jc] = 0;
+					matriz[jf-1][jc] = 0;
+					matriz[jf][jc+1] = 0;
+				}
+				else if(matriz[jf][jc-1] == matriz[jf+1][jc] && matriz[jf][jc-1] == matriz[jf-1][jc]  && matriz[jf][jc] == 0 && matriz[jf][jc-1]!=0) {
+					int puntos=getPuntos();
+					setPuntos(puntos+5);
+					matriz[jf][jc-1]=0;
+					matriz[jf+1][jc]=0;
+					matriz[jf-1][jc]=0;
+				}
+				else if(matriz[jf][jc+1] == matriz[jf+1][jc] && matriz[jf][jc+1] == matriz[jf-1][jc] && matriz[jf][jc] == 0 && matriz[jf][jc+1]!=0) {
+					int puntos=getPuntos();
+					setPuntos(puntos+5);
 					matriz[jf][jc+1] = 0;
 					matriz[jf+1][jc] = 0;
 					matriz[jf-1][jc] = 0;
 				}
+				else if(matriz[jf][jc-1] == matriz[jf][jc+1] && matriz[jf][jc] == 0 && matriz[jf][jc-1]!=0) {
+					int puntos=getPuntos();
+					setPuntos(puntos+2);
+					matriz[jf][jc-1] = 0;
+					matriz[jf][jc+1] = 0;
+				}
+				else if(matriz[jf-1][jc] == matriz[jf+1][jc] && matriz[jf][jc] == 0 && matriz[jf-1][jc]!=0) {
+					int puntos=getPuntos();
+					setPuntos(puntos+2);
+					matriz[jf-1][jc] = 0;
+					matriz[jf+1][jc] = 0;
+				}
 				else if(matriz[jf][jc-1] == matriz[jf+1][jc] && matriz[jf][jc] == 0 && matriz[jf][jc-1]!=0) {
 					int puntos=getPuntos();
-					setPuntos(puntos+5);
+					setPuntos(puntos+2);
 					matriz[jf][jc-1]=0;
 					matriz[jf+1][jc]=0;
 				}
 				else if(matriz[jf][jc-1] == matriz[jf-1][jc] && matriz[jf][jc] == 0 && matriz[jf][jc-1]!=0) {
 					int puntos=getPuntos();
-					setPuntos(puntos+5);
+					setPuntos(puntos+2);
 					matriz[jf][jc-1]=0;
 					matriz[jf-1][jc]=0;
 				}
 				else if(matriz[jf][jc+1] == matriz[jf+1][jc] && matriz[jf][jc] == 0 && matriz[jf][jc+1]!=0) {
 					int puntos=getPuntos();
-					setPuntos(puntos+5);
+					setPuntos(puntos+2);
 					matriz[jf][jc+1] = 0;
 					matriz[jf+1][jc] = 0;
 				}
 				else if(matriz[jf][jc+1] == matriz[jf-1][jc] && matriz[jf][jc] == 0 && matriz[jf][jc+1]!=0) {
 					int puntos=getPuntos();
-					setPuntos(puntos+5);
+					setPuntos(puntos+2);
 					matriz[jf][jc+1] = 0;
 					matriz[jf-1][jc] = 0;
 				}
@@ -348,27 +643,61 @@ public class Tablero {
 			}
 			catch(Exception x) {
 				try {
-					if(matriz[jf][jc-1] == matriz[jf+1][jc] && matriz[jf][jc] == 0 && matriz[jf][jc-1]!=0) {
+					if(matriz[jf][jc-1] == matriz[jf][jc+1] && matriz[jf+1][jc] == matriz[jf+1][jc] && matriz[jf][jc-1]!=0 && matriz[jf+1][jc]!=0 && matriz[jf][jc] == 0) {
+						int puntos=getPuntos();
+						setPuntos(puntos+10);
+						matriz[jf][jc-1] = 0;
+						matriz[jf+1][jc] = 0;
+						matriz[jf-1][jc] = 0;
+						matriz[jf][jc+1] = 0;
+					}
+					else if(matriz[jf][jc-1] == matriz[jf+1][jc] && matriz[jf][jc-1] == matriz[jf-1][jc]  && matriz[jf][jc] == 0 && matriz[jf][jc-1]!=0) {
 						int puntos=getPuntos();
 						setPuntos(puntos+5);
+						matriz[jf][jc-1]=0;
+						matriz[jf+1][jc]=0;
+						matriz[jf-1][jc]=0;
+					}
+					else if(matriz[jf][jc+1] == matriz[jf+1][jc] && matriz[jf][jc+1] == matriz[jf-1][jc] && matriz[jf][jc] == 0 && matriz[jf][jc+1]!=0) {
+						int puntos=getPuntos();
+						setPuntos(puntos+5);
+						matriz[jf][jc+1] = 0;
+						matriz[jf+1][jc] = 0;
+						matriz[jf-1][jc] = 0;
+					}
+					else if(matriz[jf][jc-1] == matriz[jf][jc+1] && matriz[jf][jc] == 0 && matriz[jf][jc-1]!=0) {
+						int puntos=getPuntos();
+						setPuntos(puntos+2);
+						matriz[jf][jc-1] = 0;
+						matriz[jf][jc+1] = 0;
+					}
+					else if(matriz[jf-1][jc] == matriz[jf+1][jc] && matriz[jf][jc] == 0 && matriz[jf-1][jc]!=0) {
+						int puntos=getPuntos();
+						setPuntos(puntos+2);
+						matriz[jf-1][jc] = 0;
+						matriz[jf+1][jc] = 0;
+					}
+					else if(matriz[jf][jc-1] == matriz[jf+1][jc] && matriz[jf][jc] == 0 && matriz[jf][jc-1]!=0) {
+						int puntos=getPuntos();
+						setPuntos(puntos+2);
 						matriz[jf][jc-1]=0;
 						matriz[jf+1][jc]=0;
 					}
 					else if(matriz[jf][jc-1] == matriz[jf-1][jc] && matriz[jf][jc] == 0 && matriz[jf][jc-1]!=0) {
 						int puntos=getPuntos();
-						setPuntos(puntos+5);
+						setPuntos(puntos+2);
 						matriz[jf][jc-1]=0;
 						matriz[jf-1][jc]=0;
 					}
 					else if(matriz[jf][jc+1] == matriz[jf+1][jc] && matriz[jf][jc] == 0 && matriz[jf][jc+1]!=0) {
 						int puntos=getPuntos();
-						setPuntos(puntos+5);
+						setPuntos(puntos+2);
 						matriz[jf][jc+1] = 0;
 						matriz[jf+1][jc] = 0;
 					}
 					else if(matriz[jf][jc+1] == matriz[jf-1][jc] && matriz[jf][jc] == 0 && matriz[jf][jc+1]!=0) {
 						int puntos=getPuntos();
-						setPuntos(puntos+5);
+						setPuntos(puntos+2);
 						matriz[jf][jc+1] = 0;
 						matriz[jf-1][jc] = 0;
 					}
@@ -379,21 +708,53 @@ public class Tablero {
 				}
 				catch(Exception y) {
 					try {
-						if(matriz[jf][jc-1] == matriz[jf-1][jc] && matriz[jf][jc] == 0 && matriz[jf][jc-1]!=0) {
+						if(matriz[jf][jc-1] == matriz[jf+1][jc] && matriz[jf][jc-1] == matriz[jf-1][jc]  && matriz[jf][jc] == 0 && matriz[jf][jc-1]!=0) {
 							int puntos=getPuntos();
 							setPuntos(puntos+5);
+							matriz[jf][jc-1]=0;
+							matriz[jf+1][jc]=0;
+							matriz[jf-1][jc]=0;
+						}
+						else if(matriz[jf][jc+1] == matriz[jf+1][jc] && matriz[jf][jc+1] == matriz[jf-1][jc] && matriz[jf][jc] == 0 && matriz[jf][jc+1]!=0) {
+							int puntos=getPuntos();
+							setPuntos(puntos+5);
+							matriz[jf][jc+1] = 0;
+							matriz[jf+1][jc] = 0;
+							matriz[jf-1][jc] = 0;
+						}
+						else if(matriz[jf][jc-1] == matriz[jf][jc+1] && matriz[jf][jc] == 0 && matriz[jf][jc-1]!=0) {
+							int puntos=getPuntos();
+							setPuntos(puntos+2);
+							matriz[jf][jc-1] = 0;
+							matriz[jf][jc+1] = 0;
+						}
+						else if(matriz[jf-1][jc] == matriz[jf+1][jc] && matriz[jf][jc] == 0 && matriz[jf-1][jc]!=0) {
+							int puntos=getPuntos();
+							setPuntos(puntos+2);
+							matriz[jf-1][jc] = 0;
+							matriz[jf+1][jc] = 0;
+						}
+						else if(matriz[jf][jc-1] == matriz[jf+1][jc] && matriz[jf][jc] == 0 && matriz[jf][jc-1]!=0) {
+							int puntos=getPuntos();
+							setPuntos(puntos+2);
+							matriz[jf][jc-1]=0;
+							matriz[jf+1][jc]=0;
+						}
+						else if(matriz[jf][jc-1] == matriz[jf-1][jc] && matriz[jf][jc] == 0 && matriz[jf][jc-1]!=0) {
+							int puntos=getPuntos();
+							setPuntos(puntos+2);
 							matriz[jf][jc-1]=0;
 							matriz[jf-1][jc]=0;
 						}
 						else if(matriz[jf][jc+1] == matriz[jf+1][jc] && matriz[jf][jc] == 0 && matriz[jf][jc+1]!=0) {
 							int puntos=getPuntos();
-							setPuntos(puntos+5);
+							setPuntos(puntos+2);
 							matriz[jf][jc+1] = 0;
 							matriz[jf+1][jc] = 0;
 						}
 						else if(matriz[jf][jc+1] == matriz[jf-1][jc] && matriz[jf][jc] == 0 && matriz[jf][jc+1]!=0) {
 							int puntos=getPuntos();
-							setPuntos(puntos+5);
+							setPuntos(puntos+2);
 							matriz[jf][jc+1] = 0;
 							matriz[jf-1][jc] = 0;
 						}
@@ -404,15 +765,46 @@ public class Tablero {
 					}
 					catch(Exception z) {
 						try {
-							if(matriz[jf][jc+1] == matriz[jf+1][jc] && matriz[jf][jc] == 0 && matriz[jf][jc+1]!=0) {
+							if(matriz[jf][jc+1] == matriz[jf+1][jc] && matriz[jf][jc+1] == matriz[jf-1][jc] && matriz[jf][jc] == 0 && matriz[jf][jc+1]!=0) {
 								int puntos=getPuntos();
 								setPuntos(puntos+5);
+								matriz[jf][jc+1] = 0;
+								matriz[jf+1][jc] = 0;
+								matriz[jf-1][jc] = 0;
+							}
+							else if(matriz[jf][jc-1] == matriz[jf][jc+1] && matriz[jf][jc] == 0 && matriz[jf][jc-1]!=0) {
+								int puntos=getPuntos();
+								setPuntos(puntos+2);
+								matriz[jf][jc-1] = 0;
+								matriz[jf][jc+1] = 0;
+							}
+							else if(matriz[jf-1][jc] == matriz[jf+1][jc] && matriz[jf][jc] == 0 && matriz[jf-1][jc]!=0) {
+								int puntos=getPuntos();
+								setPuntos(puntos+2);
+								matriz[jf-1][jc] = 0;
+								matriz[jf+1][jc] = 0;
+							}
+							else if(matriz[jf][jc-1] == matriz[jf+1][jc] && matriz[jf][jc] == 0 && matriz[jf][jc-1]!=0) {
+								int puntos=getPuntos();
+								setPuntos(puntos+2);
+								matriz[jf][jc-1]=0;
+								matriz[jf+1][jc]=0;
+							}
+							else if(matriz[jf][jc-1] == matriz[jf-1][jc] && matriz[jf][jc] == 0 && matriz[jf][jc-1]!=0) {
+								int puntos=getPuntos();
+								setPuntos(puntos+2);
+								matriz[jf][jc-1]=0;
+								matriz[jf-1][jc]=0;
+							}
+							else if(matriz[jf][jc+1] == matriz[jf+1][jc] && matriz[jf][jc] == 0 && matriz[jf][jc+1]!=0) {
+								int puntos=getPuntos();
+								setPuntos(puntos+2);
 								matriz[jf][jc+1] = 0;
 								matriz[jf+1][jc] = 0;
 							}
 							else if(matriz[jf][jc+1] == matriz[jf-1][jc] && matriz[jf][jc] == 0 && matriz[jf][jc+1]!=0) {
 								int puntos=getPuntos();
-								setPuntos(puntos+5);
+								setPuntos(puntos+2);
 								matriz[jf][jc+1] = 0;
 								matriz[jf-1][jc] = 0;
 							}
@@ -423,9 +815,39 @@ public class Tablero {
 						}
 						catch(Exception p) {
 							try {
-								if(matriz[jf][jc+1] == matriz[jf-1][jc] && matriz[jf][jc] == 0 && matriz[jf][jc+1]!=0) {
+								if(matriz[jf][jc-1] == matriz[jf][jc+1] && matriz[jf][jc] == 0 && matriz[jf][jc-1]!=0) {
 									int puntos=getPuntos();
-									setPuntos(puntos+5);
+									setPuntos(puntos+2);
+									matriz[jf][jc-1] = 0;
+									matriz[jf][jc+1] = 0;
+								}
+								else if(matriz[jf-1][jc] == matriz[jf+1][jc] && matriz[jf][jc] == 0 && matriz[jf-1][jc]!=0) {
+									int puntos=getPuntos();
+									setPuntos(puntos+2);
+									matriz[jf-1][jc] = 0;
+									matriz[jf+1][jc] = 0;
+								}
+								else if(matriz[jf][jc-1] == matriz[jf+1][jc] && matriz[jf][jc] == 0 && matriz[jf][jc-1]!=0) {
+									int puntos=getPuntos();
+									setPuntos(puntos+2);
+									matriz[jf][jc-1]=0;
+									matriz[jf+1][jc]=0;
+								}
+								else if(matriz[jf][jc-1] == matriz[jf-1][jc] && matriz[jf][jc] == 0 && matriz[jf][jc-1]!=0) {
+									int puntos=getPuntos();
+									setPuntos(puntos+2);
+									matriz[jf][jc-1]=0;
+									matriz[jf-1][jc]=0;
+								}
+								else if(matriz[jf][jc+1] == matriz[jf+1][jc] && matriz[jf][jc] == 0 && matriz[jf][jc+1]!=0) {
+									int puntos=getPuntos();
+									setPuntos(puntos+2);
+									matriz[jf][jc+1] = 0;
+									matriz[jf+1][jc] = 0;
+								}
+								else if(matriz[jf][jc+1] == matriz[jf-1][jc] && matriz[jf][jc] == 0 && matriz[jf][jc+1]!=0) {
+									int puntos=getPuntos();
+									setPuntos(puntos+2);
 									matriz[jf][jc+1] = 0;
 									matriz[jf-1][jc] = 0;
 								}
@@ -435,8 +857,138 @@ public class Tablero {
 								}
 							}
 							catch(Exception o) {
-								int vidas = getVidas();
-								setVidas(vidas-1);
+								try {
+									if(matriz[jf-1][jc] == matriz[jf+1][jc] && matriz[jf][jc] == 0 && matriz[jf-1][jc]!=0) {
+										int puntos=getPuntos();
+										setPuntos(puntos+2);
+										matriz[jf-1][jc] = 0;
+										matriz[jf+1][jc] = 0;
+									}
+									else if(matriz[jf][jc-1] == matriz[jf+1][jc] && matriz[jf][jc] == 0 && matriz[jf][jc-1]!=0) {
+										int puntos=getPuntos();
+										setPuntos(puntos+2);
+										matriz[jf][jc-1]=0;
+										matriz[jf+1][jc]=0;
+									}
+									else if(matriz[jf][jc-1] == matriz[jf-1][jc] && matriz[jf][jc] == 0 && matriz[jf][jc-1]!=0) {
+										int puntos=getPuntos();
+										setPuntos(puntos+2);
+										matriz[jf][jc-1]=0;
+										matriz[jf-1][jc]=0;
+									}
+									else if(matriz[jf][jc+1] == matriz[jf+1][jc] && matriz[jf][jc] == 0 && matriz[jf][jc+1]!=0) {
+										int puntos=getPuntos();
+										setPuntos(puntos+2);
+										matriz[jf][jc+1] = 0;
+										matriz[jf+1][jc] = 0;
+									}
+									else if(matriz[jf][jc+1] == matriz[jf-1][jc] && matriz[jf][jc] == 0 && matriz[jf][jc+1]!=0) {
+										int puntos=getPuntos();
+										setPuntos(puntos+2);
+										matriz[jf][jc+1] = 0;
+										matriz[jf-1][jc] = 0;
+									}
+									else {
+										int vidas = getVidas();
+										setVidas(vidas-1);
+									}
+								}
+								catch(Exception t) {
+									try {
+										if(matriz[jf][jc-1] == matriz[jf+1][jc] && matriz[jf][jc] == 0 && matriz[jf][jc-1]!=0) {
+											int puntos=getPuntos();
+											setPuntos(puntos+2);
+											matriz[jf][jc-1]=0;
+											matriz[jf+1][jc]=0;
+										}
+										else if(matriz[jf][jc-1] == matriz[jf-1][jc] && matriz[jf][jc] == 0 && matriz[jf][jc-1]!=0) {
+											int puntos=getPuntos();
+											setPuntos(puntos+2);
+											matriz[jf][jc-1]=0;
+											matriz[jf-1][jc]=0;
+										}
+										else if(matriz[jf][jc+1] == matriz[jf+1][jc] && matriz[jf][jc] == 0 && matriz[jf][jc+1]!=0) {
+											int puntos=getPuntos();
+											setPuntos(puntos+2);
+											matriz[jf][jc+1] = 0;
+											matriz[jf+1][jc] = 0;
+										}
+										else if(matriz[jf][jc+1] == matriz[jf-1][jc] && matriz[jf][jc] == 0 && matriz[jf][jc+1]!=0) {
+											int puntos=getPuntos();
+											setPuntos(puntos+2);
+											matriz[jf][jc+1] = 0;
+											matriz[jf-1][jc] = 0;
+										}
+										else {
+											int vidas = getVidas();
+											setVidas(vidas-1);
+										}
+									}
+									catch(Exception g) {
+										try {
+											if(matriz[jf][jc-1] == matriz[jf-1][jc] && matriz[jf][jc] == 0 && matriz[jf][jc-1]!=0) {
+												int puntos=getPuntos();
+												setPuntos(puntos+2);
+												matriz[jf][jc-1]=0;
+												matriz[jf-1][jc]=0;
+											}
+											else if(matriz[jf][jc+1] == matriz[jf+1][jc] && matriz[jf][jc] == 0 && matriz[jf][jc+1]!=0) {
+												int puntos=getPuntos();
+												setPuntos(puntos+2);
+												matriz[jf][jc+1] = 0;
+												matriz[jf+1][jc] = 0;
+											}
+											else if(matriz[jf][jc+1] == matriz[jf-1][jc] && matriz[jf][jc] == 0 && matriz[jf][jc+1]!=0) {
+												int puntos=getPuntos();
+												setPuntos(puntos+2);
+												matriz[jf][jc+1] = 0;
+												matriz[jf-1][jc] = 0;
+											}
+											else {
+												int vidas = getVidas();
+												setVidas(vidas-1);
+											}
+										}
+										catch(Exception d) {
+											try {
+												if(matriz[jf][jc+1] == matriz[jf+1][jc] && matriz[jf][jc] == 0 && matriz[jf][jc+1]!=0) {
+													int puntos=getPuntos();
+													setPuntos(puntos+2);
+													matriz[jf][jc+1] = 0;
+													matriz[jf+1][jc] = 0;
+												}
+												else if(matriz[jf][jc+1] == matriz[jf-1][jc] && matriz[jf][jc] == 0 && matriz[jf][jc+1]!=0) {
+													int puntos=getPuntos();
+													setPuntos(puntos+2);
+													matriz[jf][jc+1] = 0;
+													matriz[jf-1][jc] = 0;
+												}
+												else {
+													int vidas = getVidas();
+													setVidas(vidas-1);
+												}
+											}
+											catch(Exception n) {
+												try {
+													if(matriz[jf][jc+1] == matriz[jf-1][jc] && matriz[jf][jc] == 0 && matriz[jf][jc+1]!=0) {
+														int puntos=getPuntos();
+														setPuntos(puntos+2);
+														matriz[jf][jc+1] = 0;
+														matriz[jf-1][jc] = 0;
+													}
+													else {
+														int vidas = getVidas();
+														setVidas(vidas-1);
+													}
+												}
+												catch(Exception i) {
+													int vidas = getVidas();
+													setVidas(vidas-1);
+												}
+											}
+										}
+									}
+								}
 							}
 						}
 					}
