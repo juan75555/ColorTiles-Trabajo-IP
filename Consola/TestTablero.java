@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class Main {
+public class TestTablero {
 	public static void Juego(Tablero t,int[][] tablero) {
 		Scanner teclado = new Scanner(System.in);
 		System.out.print("\nMaximos Puntos Posibles: "+t.MaximasJugadas()+"\n");
@@ -35,7 +35,7 @@ public class Main {
 			name = teclado.next();
 			t.setName(name);
 		}
-		System.out.printf("El tamaño del tablero actualmente es %d x %d.\n Deseas cambiarlo?(S/N): ", t.getFilas(),t.getColumnas());
+		System.out.printf("El tamaño del tablero actualmente es %d x %d. Dificultad: %.2f\n Deseas cambiarlo?(S/N): ", t.getFilas(),t.getColumnas(),t.getDificultad());
 		op = teclado.next();
 		while(!(op.equals("S") || op.equals("N"))) {
 			System.out.print("Deseas jugar como invitado? (S/N): ");
@@ -46,6 +46,8 @@ public class Main {
 			int filas = teclado.nextInt();
 			System.out.print("Introduce el nuevo numero de columnas: ");
 			int columnas = teclado.nextInt();
+			System.out.print("Introduce una nueva dificultad (0,1-0,9): ");
+			double dificultad = teclado.nextDouble();
 			while(filas<1) {
 				System.out.printf("\nFilas introducidas %d debe ser mayor que 0.",filas);
 				System.out.print("\nIntroduce el nuevo numero de filas: ");
@@ -56,7 +58,12 @@ public class Main {
 				System.out.print("\nIntroduce el nuevo numero de columnas: ");
 				columnas = teclado.nextInt();
 			}
-			t = new Tablero(name,filas,columnas);
+			while(dificultad<=0 && dificultad>=1) {
+				System.out.printf("\nDificultad introducida %.2f debe ser (0,1-0,9).",dificultad);
+				System.out.print("Introduce una nueva dificultad (0,1-0,9): ");
+				dificultad = teclado.nextDouble();
+			}
+			t = new Tablero(name,filas,columnas,dificultad);
 		}
 		int[][] tablero = t.GeneraTablero();
 		t.ImprimeTablero(tablero);
