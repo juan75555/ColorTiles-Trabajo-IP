@@ -8,6 +8,7 @@ public class Main {
 			int jf = teclado.nextInt();
 			int jc = teclado.nextInt();
 			while(jf>tablero.length || jf<0 || jc>tablero[0].length || jc<0) {
+				System.out.printf("\nTablero %d x %d",t.getFilas(),t.getColumnas());
 				System.out.print("\nIntroduce una jugada valida (fila, columna): ");
 				jf = teclado.nextInt();
 				jc = teclado.nextInt();
