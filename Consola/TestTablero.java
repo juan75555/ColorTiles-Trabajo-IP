@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class TestTablero {
+public class Main {
 	public static void Juego(Tablero t,int[][] tablero) {
 		Scanner teclado = new Scanner(System.in);
 		System.out.print("\nMaximos Puntos Posibles: "+t.MaximasJugadas()+"\n");
@@ -7,6 +7,11 @@ public class TestTablero {
 			System.out.print("\nIntroduce tu jugada (fila, columna): ");
 			int jf = teclado.nextInt();
 			int jc = teclado.nextInt();
+			while(jf>tablero.length || jf<0 || jc>tablero[0].length || jc<0) {
+				System.out.print("\nIntroduce una jugada valida (fila, columna): ");
+				jf = teclado.nextInt();
+				jc = teclado.nextInt();
+			  }
 			t.Jugada(jf, jc);
 			t.ImprimeTablero(tablero);
 			System.out.print("\nMaximos Puntos Posibles: "+t.MaximasJugadas()+"\n");
