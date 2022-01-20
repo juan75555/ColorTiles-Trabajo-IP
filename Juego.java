@@ -1,4 +1,4 @@
-package juego;
+package a;
 
 
 import javax.swing.JOptionPane;
@@ -10,8 +10,6 @@ import javax.swing.border.EmptyBorder;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 import javax.swing.JLabel;
@@ -32,7 +30,12 @@ public class Juego extends JFrame {
 	//y si quieres que se redimensione (cambie el numero de filas x columna), cambie la dificultad o algo
 	
 	
-	private static final long serialVersionUID = 1L;//para q no salga el warning de arriba
+
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	
 	private JPanel contentPane;//panel principal donde va a ir todo contine el panel de los botnes y lo de vidas y puntos
 	private JPanel panel;//panel botones
@@ -46,8 +49,7 @@ public class Juego extends JFrame {
     private JButton[][] matriz; //la cree para poder controlar la relaion 
     													//entre las posiciones de botones de la lista y la matriz
     													//ALMACENA LOS BOTONES de ahi se sacara la info de los colores y se realizara el juego
-    private List<Integer> listaColores; //lista con los colores en orden respecto a los botones										//de forma que a cada boton le asigno la pos correspondiente de la matriz
-	
+ 
     
     //gets y sets
  
@@ -99,7 +101,8 @@ public class Juego extends JFrame {
 	 * Create the frame.
 	 */
 	public Juego(String name,double dificultad,int filas,int columnas) {
-		listaColores = new ArrayList<Integer>();
+
+		
 		setFilas(filas); //los valores de ejemplo creo q los puedes cambiar sin problema, es decir se puede cambiar el tamaño del tablero
 		setColumnas(columnas);
 		matriz = new JButton[filas][columnas];
@@ -140,7 +143,7 @@ public class Juego extends JFrame {
 			panel = new JPanel();
 			panel.setBackground(new Color(255, 255, 255));
 			panel.setBounds(0, 0, 880, 445);
-			panel.setLayout(new GridLayout(1, 0, 0, 0));//fondo que hace los elementos que añades (botones) ocupen cada uno el mismo espacio
+			panel.setLayout(new GridLayout(filas, columnas, 0, 0));//fondo que hace los elementos que añades (botones) ocupen cada uno el mismo espacio
 			crearBotonesTablero();//pone los botones creados en el tablero
 			
 			GeneraTablero();//crea la matriz y la rellena de los botones para poder obtneer las coorde nadas de los botones
@@ -185,7 +188,7 @@ public class Juego extends JFrame {
 	 */
 	private void crearBotonesTablero() {
 		getPanel().setLayout(new GridLayout(filas, columnas, 4, 0));
-		getPanel().removeAll();
+		
 		for (int i =0; i<(filas*columnas); i++) {//el 8*12 es que en el ejemplo que ponen por ventana en la explicacion de como debe de ser el trabajo 
 										// hay 8 filas y 12 columnas. Puedes poner la medida que quieras
 			getPanel().add(nuevoBoton(i));//ese i que es la posicion de la lista que ocupa ese boton, me va a servir para sacar la columna y fila que 
@@ -207,7 +210,7 @@ public class Juego extends JFrame {
 		int color= r.nextInt(7);//metodo sacar numero aleatorio para esteboton
 								//para ponerle color
 		
-		ColoresTablero(color, bt);//poner metodo que pone el color sacado al azar a ese boton creado 
+		ColoresTablero(color, bt, i);//poner metodo que pone el color sacado al azar a ese boton creado 
 		
 		
 		//addActionListener de ese boton creado, "le da la funcionalidad"
@@ -236,7 +239,7 @@ public class Juego extends JFrame {
 		representaJuego();//te actualiza el tablero en cada jugada
 		MaximasJugadas() ; //te vuelve a mostrar actualizado las jugadas que puedes hacer
 		System.out.println("\n");
-		getPanel().repaint(); //te repinta casillas revisar si no hace falta
+
 		compruebaFin();
 		
 	}
@@ -258,8 +261,9 @@ public class Juego extends JFrame {
 	 * @param numero
 	 * @param b
 	 */
-    public void ColoresTablero(int numero, JButton b) {
+    public void ColoresTablero(int numero, JButton b, int i) {
     	JButton bt=b;
+    	
         if(numero==0) {
         	bt.setBackground(Color.WHITE);
         }
@@ -281,7 +285,7 @@ public class Juego extends JFrame {
         else {
         	bt.setBackground(Color.CYAN);
         }
-        listaColores.add(numero);
+    
         
     }
     
@@ -467,7 +471,8 @@ public class Juego extends JFrame {
  				setVidas(vidas-1);
  			}
  	  }
- 	  else if(jf>0 && jf<matriz.length & jc==matriz[0].length-1) { //Casillas entre 0 fcol y ffil fcol
+ 	  else if(jf>0 &&jf<matriz.length && jc==matriz[0].length-1) {
+ 		  //Casillas entre 0 fcol y ffil fcol
  		  if(matriz[jf][jc-1].getBackground() == matriz[jf+1][jc].getBackground() && matriz[jf][jc-1].getBackground() == matriz[jf-1][jc].getBackground()  && matriz[jf][jc].getBackground() == Color.WHITE && matriz[jf][jc-1].getBackground() != Color.WHITE) {
  				int puntos=getPuntos();
  				setPuntos(puntos+5);
