@@ -1,7 +1,7 @@
 package juego;
 
 
-
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 
 import javax.swing.JFrame;
@@ -40,8 +40,9 @@ public class Juego extends JFrame {
 	private JLabel lbVidas; //muestra vidas
 
 	//tuyos
-	private int filas, columnas, vidas,puntos;
-	
+	private int filas,columnas,vidas,puntos;
+    private double dificultad;
+	private String name;
     private JButton[][] matriz; //la cree para poder controlar la relaion 
     													//entre las posiciones de botones de la lista y la matriz
     													//ALMACENA LOS BOTONES de ahi se sacara la info de los colores y se realizara el juego
@@ -53,7 +54,19 @@ public class Juego extends JFrame {
     public JButton[][] getMatriz() {
         return matriz;
     }
-    public int getFilas() {
+    public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public double getDificultad() {
+		return dificultad;
+	}
+	public void setDificultad(double dificultad) {
+		this.dificultad = dificultad;
+	}
+	public int getFilas() {
         return filas;
     }
     private void setFilas(int filas) {
@@ -85,17 +98,17 @@ public class Juego extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Juego() {
+	public Juego(String name,double dificultad,int filas,int columnas) {
 		listaColores = new ArrayList<Integer>();
-		setFilas(8); //los valores de ejemplo creo q los puedes cambiar sin problema, es decir se puede cambiar el tamaño del tablero
-		setColumnas(12);
+		setFilas(filas); //los valores de ejemplo creo q los puedes cambiar sin problema, es decir se puede cambiar el tamaño del tablero
+		setColumnas(columnas);
 		matriz = new JButton[filas][columnas];
 		setVidas(3);
 		setPuntos(0);
-		
+		setDificultad(dificultad);
 		setResizable(false);//para que no se pueda modificar el tamaño de la ventana
-		
-		setTitle("Color tiles");
+		setName(name);
+		setTitle("Color Tiles");
 		
 		
 		
@@ -582,7 +595,15 @@ public class Juego extends JFrame {
         return matriz;
     }  
     	 
-      	 
+    public int DificultadCorrecta() {
+        int cont = 0;
+        for(int i = 0; i<getFilas(); i++) {
+            for(int j = 0; j<getColumnas();j++) {
+                if(matriz[i][j].getBackground()==Color.WHITE) cont++;
+            }
+        }
+        return cont;
+    }  	 
 	
  /**
   * almacenará el boton que corresponda     	 
@@ -591,7 +612,6 @@ public class Juego extends JFrame {
  public JButton[][] GeneraTablero() {
      
 	 //lo dicho 8 filas y 12 columnas como en el ejemplo 
-	 
 	 int posBoton=0;
 	 
 	 for(int i = 0; i<filas; i++) {
@@ -601,10 +621,28 @@ public class Juego extends JFrame {
         	 
         	 posBoton++;
          }
-        	
          
      }
-
+	 if(((getColumnas()*getFilas())*getDificultad())%2==0){
+         while(DificultadCorrecta()!=(getColumnas()*getFilas())*getDificultad()){
+             int i = (int) (Math.random()*getFilas());
+             int j = (int) (Math.random()*getColumnas());
+             if(DificultadCorrecta()<(getColumnas()*getFilas())*getDificultad()) {
+                 if(matriz[i][j].getBackground()!=Color.WHITE) matriz[i][j].setBackground(Color.WHITE);
+             }
+             if(DificultadCorrecta()>(getColumnas()*getFilas())*getDificultad()) {
+                 if(matriz[i][j].getBackground()==Color.WHITE) matriz[i][j].setBackground(Color.BLUE);
+             }
+         }
+     }
+     else {
+         while(DificultadCorrecta()<(getColumnas()*getFilas())*getDificultad()){
+             int i = (int) (Math.random()*getFilas());
+             int j = (int) (Math.random()*getColumnas());
+             if(matriz[i][j].getBackground()!=Color.WHITE) matriz[i][j].setBackground(Color.WHITE);;
+         }
+     }
+     System.out.printf("Contador blancos = %d \n",DificultadCorrecta());
 
      return matriz;
  }
@@ -696,11 +734,15 @@ public class Juego extends JFrame {
  //queda comprobar el fin que se pare el juego si disparos=0 o no hay mas jugadas
  private void compruebaFin() {
      if (vidas==0) {
-         System.out.println("\n YOU LOSE!!! :(");
+         System.out.printf("\n %s LOSE!!! :(\n",getName());
+         String salida=String.format("%s LOSE!!! :(",getName());
+			JOptionPane.showMessageDialog(null, salida);
          System.exit(0);
      }
      else if (MaximasJugadas()==0){
-         System.out.println("\n YOU WIN!!! :)");
+         System.out.printf("\n %s WIN!!! :)\n",getName());
+         String salida=String.format("%s WIN!!! :)",getName());
+			JOptionPane.showMessageDialog(null, salida);
          System.exit(0);
      }
  }
