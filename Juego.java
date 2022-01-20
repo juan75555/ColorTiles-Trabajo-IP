@@ -285,7 +285,6 @@ public class Juego extends JFrame {
     public JButton[][] Jugada(int posBoton){
     	//coge la pos del boton seleccionado
     	int pb=posBoton;
-    	boolean vidaMenos=true;
     	 
     	 
     	 int jf=0;
@@ -308,94 +307,278 @@ public class Juego extends JFrame {
     	 
     	//tu tienes para comparar que sea el color blenco un 0
     	 //aqui no puedes comparar asi, si no mirando que el fondo de ese boton sea o no blanco 
-    	 
-    	 
-    	 if (jc>0&&jf>0&&jf>0&&(jc+1)<matriz[jf].length&&(jf+1)<matriz.length) {
-       if(matriz[jf][jc-1].getBackground()  == matriz[jf+1][jc].getBackground()  && matriz[jf][jc-1].getBackground()  == matriz[jf-1][jc].getBackground()  && matriz[jf][jc-1].getBackground()  == matriz[jf][jc+1].getBackground()   && matriz[jf][jc].getBackground() == Color.WHITE && matriz[jf][jc-1].getBackground() !=Color.WHITE ) {
-                    int puntos=getPuntos();
-                    setPuntos(puntos+10);
-                    matriz[jf][jc-1].setBackground(Color.WHITE);
-                    matriz[jf+1][jc].setBackground(Color.WHITE);
-                    matriz[jf-1][jc].setBackground(Color.WHITE);
-                    matriz[jf][jc+1].setBackground(Color.WHITE);
-                    vidaMenos=false;
-                
-      	}
-       else  if(matriz[jf][jc-1].getBackground()  == matriz[jf][jc+1].getBackground()  && matriz[jf+1][jc].getBackground()  == matriz[jf+1][jc].getBackground()  && matriz[jf][jc-1].getBackground() != Color.WHITE&& matriz[jf+1][jc].getBackground() != Color.WHITE&& matriz[jf][jc].getBackground() == Color.WHITE) {
-           int puntos=getPuntos();
-           setPuntos(puntos+10);
-           matriz[jf][jc-1].setBackground(Color.WHITE);
-           matriz[jf+1][jc].setBackground(Color.WHITE);
-           matriz[jf-1][jc].setBackground(Color.WHITE);
-           matriz[jf][jc+1].setBackground(Color.WHITE);
-           vidaMenos=false;
-       }
-       else  if(matriz[jf][jc-1].getBackground()  == matriz[jf+1][jc].getBackground()  && matriz[jf][jc+1].getBackground()  == matriz[jf+1][jc].getBackground()  && matriz[jf][jc-1].getBackground() != Color.WHITE && matriz[jf][jc+1].getBackground() != Color.WHITE&& matriz[jf][jc] .getBackground() == Color.WHITE) {
-           int puntos=getPuntos();
-           setPuntos(puntos+10);
-           matriz[jf][jc-1].setBackground(Color.WHITE);
-           matriz[jf+1][jc].setBackground(Color.WHITE);
-           matriz[jf-1][jc].setBackground(Color.WHITE);
-           matriz[jf][jc+1].setBackground(Color.WHITE);
-           vidaMenos=false;
-       }
-       }
-      	 if (jc>0&&(jc+1)<matriz[jf].length) {
-
-              if ((jc+1)<matriz[jf].length) {
-              	  if(matriz[jf][jc-1].getBackground()  == matriz[jf][jc+1].getBackground()  && matriz[jf][jc].getBackground() == Color.WHITE && matriz[jf][jc-1].getBackground() != Color.WHITE) {
-                       int puntos=getPuntos();
-                       setPuntos(puntos+2);
-                       matriz[jf][jc-1].setBackground(Color.WHITE);
-                       matriz[jf][jc+1].setBackground(Color.WHITE);
-                       vidaMenos=false;
-                   }
-              }
-              
-      	 }
-      	 if (jf>0&&(jf+1)<matriz.length&&(jc+1)<matriz[jf].length) {
-      		 if(matriz[jf][jc+1].getBackground()  == matriz[jf+1][jc].getBackground()  && matriz[jf][jc+1].getBackground()  == matriz[jf-1][jc].getBackground()  && matriz[jf][jc].getBackground() == Color.WHITE&& matriz[jf][jc+1].getBackground() != Color.WHITE) {
-                   int puntos=getPuntos();
-                   setPuntos(puntos+5);
-                   matriz[jf][jc+1].setBackground(Color.WHITE);
-                   matriz[jf+1][jc].setBackground(Color.WHITE);
-                   matriz[jf-1][jc].setBackground(Color.WHITE);
-                   vidaMenos=false;
-               }
-      	 }
-      	 if (jf>0&&(jf+1)<matriz.length) {
-      		  if(matriz[jf-1][jc].getBackground()  == matriz[jf+1][jc].getBackground()  && matriz[jf][jc].getBackground() == Color.WHITE && matriz[jf-1][jc].getBackground() != Color.WHITE) {
-                    int puntos=getPuntos();
-                    setPuntos(puntos+2);
-                    matriz[jf-1][jc].setBackground(Color.WHITE);
-                    matriz[jf+1][jc].setBackground(Color.WHITE);
-                    vidaMenos=false;
-                }
-      	 }
-      	 if (jf>0&&(jc+1)<matriz[jf].length) {
-      		 if(matriz[jf][jc+1].getBackground()  == matriz[jf-1][jc] .getBackground() && matriz[jf][jc].getBackground() == Color.WHITE && matriz[jf][jc+1].getBackground() != Color.WHITE) {
-                   int puntos=getPuntos();
-                   setPuntos(puntos+2);
-                   matriz[jf][jc+1].setBackground(Color.WHITE);
-                   matriz[jf-1][jc].setBackground(Color.WHITE);
-                   vidaMenos=false;
-               }
-      	 }
-
-      	 if ((jf+1)<matriz.length&&(jc+1)<matriz[jf].length) {
-      		   if(matriz[jf][jc+1].getBackground()== matriz[jf+1][jc].getBackground() && matriz[jf][jc].getBackground() == Color.WHITE&& matriz[jf][jc+1].getBackground() != Color.WHITE) {
-                    int puntos=getPuntos();
-                    setPuntos(puntos+2);
-                    matriz[jf][jc+1].setBackground(Color.WHITE);
-                    matriz[jf+1][jc].setBackground(Color.WHITE);
-                    vidaMenos=false;
-                }
-      	 }
-    	
-  if (vidaMenos==true) {
-    int vidas = getVidas();
-    setVidas(vidas-1);
-  }  
+       if(jf==0 && jc==0) { //Casilla 0 0
+ 		  if(matriz[jf][jc+1].getBackground() == matriz[jf+1][jc].getBackground() && matriz[jf][jc].getBackground() == Color.WHITE && matriz[jf][jc+1].getBackground()!=Color.WHITE) {
+ 				int puntos=getPuntos();
+ 				setPuntos(puntos+2);
+ 				matriz[jf][jc+1].setBackground(Color.WHITE);
+ 				matriz[jf+1][jc].setBackground(Color.WHITE);
+ 			}
+ 		  else {
+ 				int vidas = getVidas();
+ 				setVidas(vidas-1);
+ 			}
+ 	  }
+ 	  else if(jf==matriz.length && jc==0) { //Casilla ffil 0
+ 		  if(matriz[jf][jc+1].getBackground() == matriz[jf-1][jc].getBackground() && matriz[jf][jc].getBackground() == Color.WHITE && matriz[jf][jc+1].getBackground()!=Color.WHITE) {
+ 				int puntos=getPuntos();
+ 				setPuntos(puntos+2);
+ 				matriz[jf][jc+1].setBackground(Color.WHITE);
+ 				matriz[jf-1][jc].setBackground(Color.WHITE);
+ 			}
+ 			else {
+ 				int vidas = getVidas();
+ 				setVidas(vidas-1);
+ 			}
+ 	  }
+ 	  else if(jf<matriz.length && jf>0 && jc==0) { //Casillas entre ffil y 0
+ 		  if(matriz[jf][jc+1].getBackground() == matriz[jf+1][jc].getBackground() && matriz[jf][jc+1].getBackground() == matriz[jf-1][jc].getBackground() && matriz[jf][jc].getBackground() == Color.WHITE && matriz[jf][jc+1].getBackground() != Color.WHITE) {
+ 				int puntos=getPuntos();
+ 				setPuntos(puntos+5);
+ 				matriz[jf][jc+1].setBackground(Color.WHITE);
+ 				matriz[jf+1][jc].setBackground(Color.WHITE);
+ 				matriz[jf-1][jc].setBackground(Color.WHITE);
+ 			}
+ 		  else if(matriz[jf-1][jc].getBackground() == matriz[jf+1][jc].getBackground() && matriz[jf][jc].getBackground() == Color.WHITE && matriz[jf-1][jc].getBackground() != Color.WHITE) {
+ 				int puntos=getPuntos();
+ 				setPuntos(puntos+2);
+ 				matriz[jf-1][jc].setBackground(Color.WHITE);
+ 				matriz[jf+1][jc].setBackground(Color.WHITE);
+ 			}
+ 		  else if(matriz[jf][jc+1].getBackground() == matriz[jf+1][jc].getBackground() && matriz[jf][jc].getBackground() == Color.WHITE && matriz[jf][jc+1].getBackground() != Color.WHITE) {
+ 				int puntos=getPuntos();
+ 				setPuntos(puntos+2);
+ 				matriz[jf][jc+1].setBackground(Color.WHITE);
+ 				matriz[jf+1][jc].setBackground(Color.WHITE);
+ 			}
+ 		  else if(matriz[jf][jc+1].getBackground() == matriz[jf+1][jc].getBackground() && matriz[jf][jc].getBackground() == Color.WHITE&& matriz[jf][jc+1].getBackground() != Color.WHITE) {
+ 				int puntos=getPuntos();
+ 				setPuntos(puntos+2);
+ 				matriz[jf][jc+1].setBackground(Color.WHITE);
+ 				matriz[jf+1][jc].setBackground(Color.WHITE);
+ 			}
+ 		  else if(matriz[jf][jc+1].getBackground() == matriz[jf-1][jc].getBackground() && matriz[jf][jc].getBackground() == Color.WHITE && matriz[jf][jc+1].getBackground() != Color.WHITE) {
+ 				int puntos=getPuntos();
+ 				setPuntos(puntos+2);
+ 				matriz[jf][jc+1].setBackground(Color.WHITE);
+ 				matriz[jf-1][jc].setBackground(Color.WHITE);
+ 			}
+ 		  else {
+ 				int vidas = getVidas();
+ 				setVidas(vidas-1);
+ 			}
+ 	  }
+ 	  else if(jf==0 && jc==matriz[0].length) { //Casilla 0 fjc
+ 		  if(matriz[jf][jc-1].getBackground() == matriz[jf-1][jc].getBackground() && matriz[jf][jc].getBackground() == Color.WHITE && matriz[jf][jc-1].getBackground() != Color.WHITE) {
+ 				int puntos=getPuntos();
+ 				setPuntos(puntos+2);
+ 				matriz[jf][jc-1].setBackground(Color.WHITE);
+ 				matriz[jf-1][jc].setBackground(Color.WHITE);
+ 			}
+ 		  else {
+ 				int vidas = getVidas();
+ 				setVidas(vidas-1);
+ 			}
+ 	  }
+ 	  else if(jf==0 && jc>0 && jc<matriz[0].length) { //Casillas entre 0 0 y 0 fcol
+ 		  if(matriz[jf+1][jc].getBackground()==matriz[jf][jc-1].getBackground() && matriz[jf+1][jc].getBackground()==matriz[jf][jc+1].getBackground() && matriz[jf][jc].getBackground() == Color.WHITE &&matriz[jf+1][jc].getBackground() != Color.WHITE) {
+ 				int puntos=getPuntos();
+ 				setPuntos(puntos+5);
+ 				matriz[jf+1][jc].setBackground(Color.WHITE);
+ 				matriz[jf][jc-1].setBackground(Color.WHITE);
+ 				matriz[jf][jc+1].setBackground(Color.WHITE);
+ 			}
+ 		  else if(matriz[jf][jc-1].getBackground() == matriz[jf][jc+1].getBackground() && matriz[jf][jc].getBackground() == Color.WHITE && matriz[jf][jc-1].getBackground() != Color.WHITE) {
+ 				int puntos=getPuntos();
+ 				setPuntos(puntos+2);
+ 				matriz[jf][jc-1].setBackground(Color.WHITE);
+ 				matriz[jf][jc+1].setBackground(Color.WHITE);
+ 			}
+ 		  else if(matriz[jf][jc-1].getBackground() == matriz[jf+1][jc].getBackground() && matriz[jf][jc].getBackground() == Color.WHITE && matriz[jf][jc-1].getBackground() != Color.WHITE) {
+ 				int puntos=getPuntos();
+ 				setPuntos(puntos+2);
+ 				matriz[jf][jc-1].setBackground(Color.WHITE);
+ 				matriz[jf+1][jc].setBackground(Color.WHITE);
+ 			}
+ 		  else if(matriz[jf][jc+1].getBackground() == matriz[jf+1][jc].getBackground() && matriz[jf][jc].getBackground() == Color.WHITE && matriz[jf][jc+1].getBackground() != Color.WHITE) {
+ 				int puntos=getPuntos();
+ 				setPuntos(puntos+2);
+ 				matriz[jf][jc+1].setBackground(Color.WHITE);
+ 				matriz[jf+1][jc].setBackground(Color.WHITE);
+ 			}
+ 		  else {
+ 				int vidas = getVidas();
+ 				setVidas(vidas-1);
+ 			}
+ 	  }
+ 	  else if(jf==matriz.length && jc== matriz[0].length) { //Casilla ffil fcol
+ 		  if(matriz[jf][jc-1].getBackground() == matriz[jf-1][jc].getBackground() && matriz[jf][jc].getBackground() == Color.WHITE && matriz[jf][jc-1].getBackground() != Color.WHITE) {
+ 				int puntos=getPuntos();
+ 				setPuntos(puntos+2);
+ 				matriz[jf][jc-1].setBackground(Color.WHITE);
+ 				matriz[jf-1][jc].setBackground(Color.WHITE);
+ 			}
+ 		  else {
+ 				int vidas = getVidas();
+ 				setVidas(vidas-1);
+ 			}
+ 	  }
+ 	  else if(jf==matriz.length && jc>0 && jc<matriz[0].length) { //Casillas entre ffil 0 y ffil fcol
+ 		  if(matriz[jf-1][jc].getBackground()==matriz[jf][jc-1].getBackground() && matriz[jf-1][jc].getBackground()==matriz[jf][jc+1].getBackground() && matriz[jf][jc].getBackground() == Color.WHITE &&matriz[jf-1][jc].getBackground() != Color.WHITE) {
+ 				int puntos=getPuntos();
+ 				setPuntos(puntos+5);
+ 				matriz[jf-1][jc].setBackground(Color.WHITE);
+ 				matriz[jf][jc-1].setBackground(Color.WHITE);
+ 				matriz[jf][jc+1].setBackground(Color.WHITE);
+ 			}
+ 		  else if(matriz[jf][jc-1].getBackground() == matriz[jf][jc+1].getBackground() && matriz[jf][jc].getBackground() == Color.WHITE && matriz[jf][jc-1].getBackground() != Color.WHITE) {
+ 				int puntos=getPuntos();
+ 				setPuntos(puntos+2);
+ 				matriz[jf][jc-1].setBackground(Color.WHITE);
+ 				matriz[jf][jc+1].setBackground(Color.WHITE);
+ 			}
+ 		  else if(matriz[jf][jc-1].getBackground() == matriz[jf-1][jc].getBackground() && matriz[jf][jc].getBackground() == Color.WHITE && matriz[jf][jc-1].getBackground() != Color.WHITE) {
+ 				int puntos=getPuntos();
+ 				setPuntos(puntos+2);
+ 				matriz[jf][jc-1].setBackground(Color.WHITE);
+ 				matriz[jf-1][jc].setBackground(Color.WHITE);
+ 			}
+ 		  else if(matriz[jf][jc+1].getBackground() == matriz[jf-1][jc].getBackground() && matriz[jf][jc].getBackground() == Color.WHITE && matriz[jf][jc+1].getBackground() != Color.WHITE) {
+ 				int puntos=getPuntos();
+ 				setPuntos(puntos+2);
+ 				matriz[jf][jc+1].setBackground(Color.WHITE);
+ 				matriz[jf-1][jc].setBackground(Color.WHITE);
+ 			}
+ 			else {
+ 				int vidas = getVidas();
+ 				setVidas(vidas-1);
+ 			}
+ 	  }
+ 	  else if(jf>0 && jf<matriz.length & jc==matriz[0].length) { //Casillas entre 0 fcol y ffil fcol
+ 		  if(matriz[jf][jc-1].getBackground() == matriz[jf+1][jc].getBackground() && matriz[jf][jc-1].getBackground() == matriz[jf-1][jc].getBackground()  && matriz[jf][jc].getBackground() == Color.WHITE && matriz[jf][jc-1].getBackground() != Color.WHITE) {
+ 				int puntos=getPuntos();
+ 				setPuntos(puntos+5);
+ 				matriz[jf][jc-1].setBackground(Color.WHITE);
+ 				matriz[jf+1][jc].setBackground(Color.WHITE);
+ 				matriz[jf-1][jc].setBackground(Color.WHITE);
+ 			}
+ 		  else if(matriz[jf-1][jc].getBackground() == matriz[jf+1][jc].getBackground() && matriz[jf][jc].getBackground() == Color.WHITE && matriz[jf-1][jc].getBackground() != Color.WHITE) {
+ 				int puntos=getPuntos();
+ 				setPuntos(puntos+2);
+ 				matriz[jf-1][jc].setBackground(Color.WHITE);
+ 				matriz[jf+1][jc].setBackground(Color.WHITE);
+ 			}
+ 		  else if(matriz[jf][jc-1].getBackground() == matriz[jf+1][jc].getBackground() && matriz[jf][jc].getBackground() == Color.WHITE && matriz[jf][jc-1].getBackground() != Color.WHITE) {
+ 				int puntos=getPuntos();
+ 				setPuntos(puntos+2);
+ 				matriz[jf][jc-1].setBackground(Color.WHITE);
+ 				matriz[jf+1][jc].setBackground(Color.WHITE);
+ 			}
+ 		  else if(matriz[jf][jc-1].getBackground() == matriz[jf-1][jc].getBackground() && matriz[jf][jc].getBackground() == Color.WHITE && matriz[jf][jc-1].getBackground() != Color.WHITE) {
+ 				int puntos=getPuntos();
+ 				setPuntos(puntos+2);
+ 				matriz[jf][jc-1].setBackground(Color.WHITE);
+ 				matriz[jf-1][jc].setBackground(Color.WHITE);
+ 			}
+ 		  else {
+ 				int vidas = getVidas();
+ 				setVidas(vidas-1);
+ 			}
+ 	  }
+ 	  else { //Resto de tablero
+ 		  if(matriz[jf][jc-1].getBackground() == matriz[jf+1][jc].getBackground() && matriz[jf][jc-1].getBackground() == matriz[jf-1][jc].getBackground() && matriz[jf][jc-1].getBackground() == matriz[jf][jc+1].getBackground()  && matriz[jf][jc].getBackground() == Color.WHITE && matriz[jf][jc-1].getBackground() != Color.WHITE) {
+ 				int puntos=getPuntos();
+ 				setPuntos(puntos+10);
+ 				matriz[jf][jc-1].setBackground(Color.WHITE);
+ 				matriz[jf+1][jc].setBackground(Color.WHITE);
+ 				matriz[jf-1][jc].setBackground(Color.WHITE);
+ 				matriz[jf][jc+1].setBackground(Color.WHITE);
+ 			}
+ 			else if(matriz[jf][jc-1].getBackground() == matriz[jf+1][jc].getBackground() && matriz[jf][jc+1].getBackground() == matriz[jf+1][jc].getBackground() && matriz[jf][jc-1].getBackground() != Color.WHITE && matriz[jf][jc+1].getBackground() != Color.WHITE && matriz[jf][jc].getBackground() == Color.WHITE) {
+ 				int puntos=getPuntos();
+ 				setPuntos(puntos+10);
+ 				matriz[jf][jc-1].setBackground(Color.WHITE);
+ 				matriz[jf+1][jc].setBackground(Color.WHITE);
+ 				matriz[jf-1][jc].setBackground(Color.WHITE);
+ 				matriz[jf][jc+1].setBackground(Color.WHITE);
+ 			}
+ 			else if(matriz[jf][jc-1].getBackground() == matriz[jf][jc+1].getBackground() && matriz[jf+1][jc].getBackground() == matriz[jf-1][jc].getBackground() && matriz[jf][jc-1].getBackground() != Color.WHITE && matriz[jf+1][jc].getBackground() != Color.WHITE && matriz[jf][jc].getBackground() == Color.WHITE) {
+ 				int puntos=getPuntos();
+ 				setPuntos(puntos+10);
+ 				matriz[jf][jc-1].setBackground(Color.WHITE);
+ 				matriz[jf+1][jc].setBackground(Color.WHITE);
+ 				matriz[jf-1][jc].setBackground(Color.WHITE);
+ 				matriz[jf][jc+1].setBackground(Color.WHITE);
+ 			}
+ 			else if(matriz[jf][jc-1].getBackground() == matriz[jf+1][jc].getBackground() && matriz[jf][jc-1].getBackground() == matriz[jf-1][jc].getBackground()  && matriz[jf][jc].getBackground() == Color.WHITE && matriz[jf][jc-1].getBackground() != Color.WHITE) {
+ 				int puntos=getPuntos();
+ 				setPuntos(puntos+5);
+ 				matriz[jf][jc-1].setBackground(Color.WHITE);
+ 				matriz[jf+1][jc].setBackground(Color.WHITE);
+ 				matriz[jf-1][jc].setBackground(Color.WHITE);
+ 			}
+ 			else if(matriz[jf][jc+1].getBackground() == matriz[jf+1][jc].getBackground() && matriz[jf][jc+1].getBackground() == matriz[jf-1][jc].getBackground() && matriz[jf][jc].getBackground() == Color.WHITE && matriz[jf][jc+1].getBackground() != Color.WHITE) {
+ 				int puntos=getPuntos();
+ 				setPuntos(puntos+5);
+ 				matriz[jf][jc+1].setBackground(Color.WHITE);
+ 				matriz[jf+1][jc].setBackground(Color.WHITE);
+ 				matriz[jf-1][jc].setBackground(Color.WHITE);
+ 			}
+ 			else if(matriz[jf-1][jc].getBackground()==matriz[jf][jc-1].getBackground() && matriz[jf-1][jc].getBackground()==matriz[jf][jc+1].getBackground() && matriz[jf][jc].getBackground() == Color.WHITE &&matriz[jf-1][jc].getBackground() != Color.WHITE) {
+ 				int puntos=getPuntos();
+ 				setPuntos(puntos+5);
+ 				matriz[jf-1][jc].setBackground(Color.WHITE);
+ 				matriz[jf][jc-1].setBackground(Color.WHITE);
+ 				matriz[jf][jc+1].setBackground(Color.WHITE);
+ 			}
+ 			else if(matriz[jf+1][jc].getBackground()==matriz[jf][jc-1].getBackground() && matriz[jf+1][jc].getBackground()==matriz[jf][jc+1].getBackground() && matriz[jf][jc].getBackground() == Color.WHITE &&matriz[jf+1][jc].getBackground() != Color.WHITE) {
+ 				int puntos=getPuntos();
+ 				setPuntos(puntos+5);
+ 				matriz[jf+1][jc].setBackground(Color.WHITE);
+ 				matriz[jf][jc-1].setBackground(Color.WHITE);
+ 				matriz[jf][jc+1].setBackground(Color.WHITE);
+ 			}
+ 			else if(matriz[jf][jc-1].getBackground() == matriz[jf][jc+1].getBackground() && matriz[jf][jc].getBackground() == Color.WHITE && matriz[jf][jc-1].getBackground() != Color.WHITE) {
+ 				int puntos=getPuntos();
+ 				setPuntos(puntos+2);
+ 				matriz[jf][jc-1].setBackground(Color.WHITE);
+ 				matriz[jf][jc+1].setBackground(Color.WHITE);
+ 			}
+ 			else if(matriz[jf-1][jc].getBackground() == matriz[jf+1][jc].getBackground() && matriz[jf][jc].getBackground() == Color.WHITE && matriz[jf-1][jc].getBackground() != Color.WHITE) {
+ 				int puntos=getPuntos();
+ 				setPuntos(puntos+2);
+ 				matriz[jf-1][jc].setBackground(Color.WHITE);
+ 				matriz[jf+1][jc].setBackground(Color.WHITE);
+ 			}
+ 			else if(matriz[jf][jc-1].getBackground() == matriz[jf+1][jc].getBackground() && matriz[jf][jc].getBackground() == Color.WHITE && matriz[jf][jc-1].getBackground() != Color.WHITE) {
+ 				int puntos=getPuntos();
+ 				setPuntos(puntos+2);
+ 				matriz[jf][jc-1].setBackground(Color.WHITE);
+ 				matriz[jf+1][jc].setBackground(Color.WHITE);
+ 			}
+ 			else if(matriz[jf][jc-1].getBackground() == matriz[jf-1][jc].getBackground() && matriz[jf][jc].getBackground() == Color.WHITE && matriz[jf][jc-1].getBackground() != Color.WHITE) {
+ 				int puntos=getPuntos();
+ 				setPuntos(puntos+2);
+ 				matriz[jf][jc-1].setBackground(Color.WHITE);
+ 				matriz[jf-1][jc].setBackground(Color.WHITE);
+ 			}
+ 			else if(matriz[jf][jc+1].getBackground() == matriz[jf+1][jc].getBackground() && matriz[jf][jc].getBackground() == Color.WHITE && matriz[jf][jc+1].getBackground() != Color.WHITE) {
+ 				int puntos=getPuntos();
+ 				setPuntos(puntos+2);
+ 				matriz[jf][jc+1].setBackground(Color.WHITE);
+ 				matriz[jf+1][jc].setBackground(Color.WHITE);
+ 			}
+ 			else if(matriz[jf][jc+1].getBackground() == matriz[jf-1][jc].getBackground() && matriz[jf][jc].getBackground() == Color.WHITE && matriz[jf][jc+1].getBackground() != Color.WHITE) {
+ 				int puntos=getPuntos();
+ 				setPuntos(puntos+2);
+ 				matriz[jf][jc+1].setBackground(Color.WHITE);
+ 				matriz[jf-1][jc].setBackground(Color.WHITE);
+ 			}
+ 			else {
+ 				int vidas = getVidas();
+ 				setVidas(vidas-1);
+ 			}
+ 	  }
         return matriz;
     }  
     	 
