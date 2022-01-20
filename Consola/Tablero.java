@@ -368,7 +368,7 @@ public class Tablero {
 				setVidas(vidas-1);
 			}
 	  }
-	  else if(jf==matriz.length && jc>0 && jc<matriz[0].length) { //Casillas entre ffil 0 y ffil fcol
+	  else if(jf==matriz.length-1 && jc>0 && jc<matriz[0].length) { //Casillas entre ffil 0 y ffil fcol
 		  if(matriz[jf-1][jc]==matriz[jf][jc-1] && matriz[jf-1][jc]==matriz[jf][jc+1] && matriz[jf][jc]==0 &&matriz[jf-1][jc]!=0) {
 				int puntos=getPuntos();
 				setPuntos(puntos+5);
@@ -399,7 +399,7 @@ public class Tablero {
 				setVidas(vidas-1);
 			}
 	  }
-	  else if(jf>0 && jf<matriz.length & jc==matriz[0].length) { //Casillas entre 0 fcol y ffil fcol
+	  else if(jf>0 && jf<matriz.length & jc==matriz[0].length-1) { //Casillas entre 0 fcol y ffil fcol
 		  if(matriz[jf][jc-1] == matriz[jf+1][jc] && matriz[jf][jc-1] == matriz[jf-1][jc]  && matriz[jf][jc] == 0 && matriz[jf][jc-1]!=0) {
 				int puntos=getPuntos();
 				setPuntos(puntos+5);
