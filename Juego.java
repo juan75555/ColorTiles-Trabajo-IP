@@ -436,7 +436,7 @@ public class Juego extends JFrame {
  				setVidas(vidas-1);
  			}
  	  }
- 	  else if(jf==matriz.length && jc>0 && jc<matriz[0].length) { //Casillas entre ffil 0 y ffil fcol
+ 	  else if(jf==matriz.length-1 && jc>0 && jc<matriz[0].length) { //Casillas entre ffil 0 y ffil fcol
  		  if(matriz[jf-1][jc].getBackground()==matriz[jf][jc-1].getBackground() && matriz[jf-1][jc].getBackground()==matriz[jf][jc+1].getBackground() && matriz[jf][jc].getBackground() == Color.WHITE &&matriz[jf-1][jc].getBackground() != Color.WHITE) {
  				int puntos=getPuntos();
  				setPuntos(puntos+5);
@@ -467,7 +467,7 @@ public class Juego extends JFrame {
  				setVidas(vidas-1);
  			}
  	  }
- 	  else if(jf>0 && jf<matriz.length & jc==matriz[0].length) { //Casillas entre 0 fcol y ffil fcol
+ 	  else if(jf>0 && jf<matriz.length & jc==matriz[0].length-1) { //Casillas entre 0 fcol y ffil fcol
  		  if(matriz[jf][jc-1].getBackground() == matriz[jf+1][jc].getBackground() && matriz[jf][jc-1].getBackground() == matriz[jf-1][jc].getBackground()  && matriz[jf][jc].getBackground() == Color.WHITE && matriz[jf][jc-1].getBackground() != Color.WHITE) {
  				int puntos=getPuntos();
  				setPuntos(puntos+5);
