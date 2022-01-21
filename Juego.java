@@ -1,6 +1,4 @@
-package a;
-
-
+//Librerias Necesarias
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
 
@@ -16,39 +14,21 @@ import javax.swing.JLabel;
 import java.awt.Color;
 
 public class Juego extends JFrame {
-	//LEEEEEEEEEEEEEEEEEEEEEEEEEEEE!!!!!!!!
-	
-	
-	//PRIMERO PURBA EL JUEGO (ten en cuenta que las coordenadas impresas empiezan en 0)
-	
-	//FALTA: comprobar el fin que se pare el juego si disparos=0 o no hay mas jugadas
-	 //revisar metodos privados, set innecesarios y fila x Columna (usar variables que las almacenen)
-	//otros cambios menores (q se parezca mas el codigo etc u otras cosas que prefieras que sean distintas)
-	
-	//Y CASOS QUE PUEDAN FALTAR YA QUE USE EL PRIMER CODIGO QUE ME PASASTE (al final no me pasate el ultimo jajajaja)
-	
-	//y si quieres que se redimensione (cambie el numero de filas x columna), cambie la dificultad o algo
-	
-	
 
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	
-	private JPanel contentPane;//panel principal donde va a ir todo contine el panel de los botnes y lo de vidas y puntos
-	private JPanel panel;//panel botones
-	private JLabel lbPuntos; //muestra puntos
-	private JLabel lbVidas; //muestra vidas
-
-	//tuyos
+	private static final long serialVersionUID = 1L; //Añadido por eclipse automaticamente por la alerta de un warning
+	//Inicialización de variables.
+	private JPanel contentPane;//Panel principal donde va a ir todo contine el panel de los botnes y lo de vidas y puntos
+	private JPanel panel;//Panel botones
+	private JLabel lbPuntos; //Muestra puntos
+	private JLabel lbVidas; //Muestra vidas
 	private int filas,columnas,vidas,puntos;
     private double dificultad;
 	private String name;
-    private JButton[][] matriz; //la cree para poder controlar la relaion 
-    													//entre las posiciones de botones de la lista y la matriz
-    													//ALMACENA LOS BOTONES de ahi se sacara la info de los colores y se realizara el juego
+	
+	//ALMACENA LOS BOTONES de ahi se sacara la info de los colores y se realizara el juego
+    private JButton[][] matriz; //control de la relacion entre las posiciones de botones de la lista y la matriz
+    													
+    
  
     
     //gets y sets
@@ -103,13 +83,13 @@ public class Juego extends JFrame {
 	public Juego(String name,double dificultad,int filas,int columnas) {
 
 		
-		setFilas(filas); //los valores de ejemplo creo q los puedes cambiar sin problema, es decir se puede cambiar el tamaño del tablero
+		setFilas(filas); 
 		setColumnas(columnas);
 		matriz = new JButton[filas][columnas];
 		setVidas(3);
 		setPuntos(0);
 		setDificultad(dificultad);
-		setResizable(false);//para que no se pueda modificar el tamaño de la ventana
+		setResizable(false);//Sirve para que no se pueda modificar el tamaño de la ventana
 		setName(name);
 		setTitle("Color Tiles");
 		
@@ -123,7 +103,7 @@ public class Juego extends JFrame {
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(null);//fondo que te permite colocar los elementos adentro del panel donde quieras
+		contentPane.setLayout(null);//fondo que permite colocar los elementos adentro del panel donde quieras
 		
 		//añade el panel botones, vidas y puntos
 		contentPane.add(getPanel());
@@ -136,7 +116,7 @@ public class Juego extends JFrame {
 	
 	/**
 	 * panel donde van a ir los bootnes del juego
-	 * @return
+	 * @return panel
 	 */
 	private JPanel getPanel() {
 		if (panel == null) {
@@ -146,16 +126,16 @@ public class Juego extends JFrame {
 			panel.setLayout(new GridLayout(filas, columnas, 0, 0));//fondo que hace los elementos que añades (botones) ocupen cada uno el mismo espacio
 			crearBotonesTablero();//pone los botones creados en el tablero
 			
-			GeneraTablero();//crea la matriz y la rellena de los botones para poder obtneer las coorde nadas de los botones
+			GeneraTablero();//crea la matriz y la rellena de los botones para poder obtener las coordenadas de los botones
 			
-			MaximasJugadas();//muestra las jugadas posibles
-			System.out.println("\n");//basicamente para que haya una separacion cada vez que imprime las jugadas
+			MaximasJugadas();//muestra las jugadas posibles y comprueba que hay jugadas posibles en el tablero.
+			System.out.println("\n");//separacion cada vez que imprime las jugadas
 		}
 		return panel;
 	}
 	/**
-	 * muestra las vidas actualizadas
-	 * @return
+	 * muestra los puntos actualizados
+	 * @return lbPuntos
 	 */
 	private JLabel getLbPuntos() {
 		if (lbPuntos == null) {
@@ -165,8 +145,8 @@ public class Juego extends JFrame {
 		return lbPuntos;
 	}
 	/**
-	 * muestra los puntos actualizados
-	 * @return
+	 * muestra las vidas actualizadas
+	 * @return lbVidas
 	 */
 	private JLabel getLbVidas() {
 		if (lbVidas == null) {
@@ -176,10 +156,7 @@ public class Juego extends JFrame {
 		return lbVidas;
 	}
 	
-	//LOGICA
-	
-	
-	//metodos nuevos
+	//PARTE DE LOGICA
 	
 	/**
 	 * Crea los botones del tablero
@@ -189,10 +166,9 @@ public class Juego extends JFrame {
 	private void crearBotonesTablero() {
 		getPanel().setLayout(new GridLayout(filas, columnas, 4, 0));
 		
-		for (int i =0; i<(filas*columnas); i++) {//el 8*12 es que en el ejemplo que ponen por ventana en la explicacion de como debe de ser el trabajo 
-										// hay 8 filas y 12 columnas. Puedes poner la medida que quieras
-			getPanel().add(nuevoBoton(i));//ese i que es la posicion de la lista que ocupa ese boton, me va a servir para sacar la columna y fila que 
-											//le corresponde y poder usar tu metodo
+		for (int i =0; i<(filas*columnas); i++) { 
+			getPanel().add(nuevoBoton(i));//ese i que es la posicion de la lista que ocupa ese boton,sirve para sacar la columna y fila que 
+											//le corresponde y poder usar la logica del trabajo de consola editada
 											//por ejemplo la fila 2 y columna 2 si sumas 2+2=4, corresponderia con el boton que es el numero 4 
 		}
 	}
@@ -205,22 +181,17 @@ public class Juego extends JFrame {
 	private JButton nuevoBoton(int i) {
 		JButton bt = new JButton("");
 		bt.setActionCommand(String.valueOf(i));
-		
 		Random r=new Random();
-		int color= r.nextInt(7);//metodo sacar numero aleatorio para esteboton
-								//para ponerle color
-		
-		ColoresTablero(color, bt, i);//poner metodo que pone el color sacado al azar a ese boton creado 
-		
-		
+		int color= r.nextInt(7);
+		ColoresTablero(color, bt, i);
 		//addActionListener de ese boton creado, "le da la funcionalidad"
 		bt.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int posicion = Integer.parseInt(bt.getActionCommand());//coge la posicion que ocupa el boton seleccionado por el usuario 
 				
 				seleccionar(posicion); //recrea el juego
-										//por una parte te actualiza el tablero en cada jugada
-										//por la otra te actualiza los puntos y todo eso (vidas y jugadas posibles)
+										//por una parte actualiza el tablero en cada jugada
+										//por la otra actualiza los puntos y todo eso (vidas y jugadas posibles)
 			}
 
 			
@@ -229,18 +200,18 @@ public class Juego extends JFrame {
 	}
 	
 	
-	/**metodo que recrea el juego y cambia los colores segun disparo
+	/**metodo que recrea el juego y cambia los colores
 	 */
 	private void seleccionar(int posicion) {
 		
 		
 		
-		Jugada(posicion);//te actualiza los puntos y todo eso (vidas y jugadas posibles)
-		representaJuego();//te actualiza el tablero en cada jugada
-		MaximasJugadas() ; //te vuelve a mostrar actualizado las jugadas que puedes hacer
+		Jugada(posicion);//actualiza los puntos y todo eso (vidas y jugadas posibles)
+		representaJuego();//actualiza el tablero en cada jugada
+		MaximasJugadas() ; //vuelve a mostrar actualizado las jugadas que puedes hacer
 		System.out.println("\n");
 
-		compruebaFin();
+		compruebaFin();//comprueba si el juego ha terminado tanto si es victoria como derrota
 		
 	}
 	
@@ -253,9 +224,7 @@ public class Juego extends JFrame {
 	}
 	
 	
-	
-	//metodos tuyos "con cambios"
-	
+	//Metodos reciclados del juego de consola hecho antes y editados para adaptarlos a la ventana.
 	/**
 	 * devuelve el color de fondo del boton
 	 * @param numero
@@ -291,10 +260,6 @@ public class Juego extends JFrame {
     
     
     /**
-     * cambios q hice:
-     * no hace falta que compruebe si mete un numero negativo o superior al tamaño de la matriz 
-     * ya que directamente no lo va a poder seleccionar
-     * 
      * recibe la pos de la lista del boton seleccionado y saca las "coordenadas de matriz"
      * @param i
      * @return
@@ -308,11 +273,11 @@ public class Juego extends JFrame {
     	 int jc=0;
     	 
     	 //una vez que tengo el boton ahora recorro la matriz para saber la pos (fila x columna) que le corresponde
-    	 // getPanel().getComponent(i) significa cogo el botn en la posicion i del panel de botones
+    	 // getPanel().getComponent(i) coge el botn en la posicion i del panel de botones
     	 for(int i = 0; i<filas; i++) {
              for(int j = 0; j<columnas;j++) {
             	 if ( matriz[i][j].equals(getPanel().getComponent(pb))) {
-            		 //cuando coincida ahora ya tengo las posiciones jc y jf de ese boton
+            		 //cuando coincida tenemos las posiciones jc y jf de ese boton
             		 jf=i;
                 	 jc=j;
             		 }
@@ -322,8 +287,7 @@ public class Juego extends JFrame {
             		 
     	 
     	 
-    	//tu tienes para comparar que sea el color blenco un 0
-    	 //aqui no puedes comparar asi, si no mirando que el fondo de ese boton sea o no blanco 
+    	 //Control de excepciones mediante ifs y jugadas posibles con cada casilla "problematica" 
        if(jf==0 && jc==0) { //Casilla 0 0
  		  if(matriz[jf][jc+1].getBackground() == matriz[jf+1][jc].getBackground() && matriz[jf][jc].getBackground() == Color.WHITE && matriz[jf][jc+1].getBackground()!=Color.WHITE) {
  				int puntos=getPuntos();
@@ -599,7 +563,11 @@ public class Juego extends JFrame {
  	  }
         return matriz;
     }  
-    	 
+    
+    /**
+     * Comprueba el numero de botones blancos en el tablero.
+     * @return cont
+     */
     public int DificultadCorrecta() {
         int cont = 0;
         for(int i = 0; i<getFilas(); i++) {
@@ -611,12 +579,10 @@ public class Juego extends JFrame {
     }  	 
 	
  /**
-  * almacenará el boton que corresponda     	 
-  * @return
+  * Almacenará el boton que corresponda     	 
+  * @return matriz
   */
  public JButton[][] GeneraTablero() {
-     
-	 //lo dicho 8 filas y 12 columnas como en el ejemplo 
 	 int posBoton=0;
 	 
 	 for(int i = 0; i<filas; i++) {
@@ -628,8 +594,9 @@ public class Juego extends JFrame {
          }
          
      }
+	 //Comprobamos que el numero de casillas blancas se adecua a los necesarios segun la dificultad del juego.
 	 if(((getColumnas()*getFilas())*getDificultad())%2==0){
-         while(DificultadCorrecta()!=(getColumnas()*getFilas())*getDificultad()){
+         while(DificultadCorrecta()!=(getColumnas()*getFilas())*getDificultad()){ //En caso contrario de forma aleatoria cambiamos de forma aleatoria las casillas hasta que el numero de casillas blancas se adecue a los necesarios segun la dificultad del juego.
              int i = (int) (Math.random()*getFilas());
              int j = (int) (Math.random()*getColumnas());
              if(DificultadCorrecta()<(getColumnas()*getFilas())*getDificultad()) {
@@ -653,10 +620,8 @@ public class Juego extends JFrame {
  }
  
  /**
-  * NOTA: lo mismo dicho de antes, tu almacenas nuemros para controlar los colores
-  * numero 0= color blanco
-  * aqui tienes que comparar con el color de fondo del boton
-  * @return
+  * Recorre todo el tablero mirando el numero de jugadas maximas posibles en el tablero e imprime en consola las jugadas posibles.
+  * @return max
   */
  public int MaximasJugadas() {
 	  int max = 0;
@@ -736,7 +701,7 @@ public class Juego extends JFrame {
 	  return max;
 	}
 	  
- //queda comprobar el fin que se pare el juego si disparos=0 o no hay mas jugadas
+ //Comprueba el fin del juego, ya sea porque el usuario se queda sin vidas o porque se queda el tablero sin jugadas posibles.
  private void compruebaFin() {
      if (vidas==0) {
          System.out.printf("\n %s LOSE!!! :(\n",getName());
@@ -751,7 +716,4 @@ public class Juego extends JFrame {
          System.exit(0);
      }
  }
- 
- //revisar metodos privados, set innecesarios y fila x Columna
- 
 }
